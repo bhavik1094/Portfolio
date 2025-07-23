@@ -1,0 +1,27 @@
+.navbar {
+  transition: all 0.4s ease;
+}
+
+.navbar-scrolled {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #ddd;
+}
+
+.dark-mode .navbar {
+  background-color: #1a1a1a !important;
+}
+
+.dark-mode .nav-link {
+  color: #ddd !important;
+}

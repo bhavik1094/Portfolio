@@ -1,0 +1,29 @@
+.skill-card {
+  width: 100%;
+  max-width: 220px;
+  background-color: #f8f9fa;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Animate icon on hover */
+.skill-card i {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #333;
+}
+
+.skill-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+  color: #007bff;
+}
+
+/* Optional: Add glowing effect */
+.skill-card:hover h6 {
+  color: #007bff;
+  text-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
