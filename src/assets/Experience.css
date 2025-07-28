@@ -26,3 +26,9 @@ ul li {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+.text-gradient-blue {
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

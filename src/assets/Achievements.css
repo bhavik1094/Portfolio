@@ -1,0 +1,14 @@
+.achievement-card {
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+  background: #fff;
+}
+.achievement-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.text-gradient-purple {
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

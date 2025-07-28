@@ -1,11 +1,14 @@
 import React from 'react';
 import '../assets/Experience.css';
+import { MdWorkHistory } from 'react-icons/md';
 
 function Experience() {
   return (
     <section className="experience-section py-5 bg-light" id="experience">
       <div className="container" data-aos="fade-up">
-        <h2 className="section-title mb-5 fw-bold text-center">Experience</h2>
+        <h2 className="section-title mb-5 fw-bold text-center text-gradient-blue">
+          <MdWorkHistory className="me-2 mb-1" /> Experience
+        </h2>
 
         <div className="timeline">
           <div className="timeline-item mb-5" data-aos="fade-right">

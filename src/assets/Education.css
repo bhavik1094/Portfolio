@@ -1,20 +1,116 @@
-.edu-card {
-  background-color: #fdfdfd;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.edu-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
+.timeline-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
 }
 
 .section-title {
-  font-weight: 700;
   font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, #007bff, #00c6ff);
+.text-gradient-blue {
+  background: linear-gradient(to right, #007bff, #00c6ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+  background: linear-gradient(90deg, #28a745, #5cd68a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #007bff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  padding: 1rem 2rem;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+  left: calc(50% - 10px);
+}
+
+.timeline-box {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.timeline-item.left .timeline-box {
+  margin-right: auto;
+  text-align: right;
+}
+
+.timeline-item.right .timeline-box {
+  margin-left: auto;
+  text-align: left;
+}
+
+.timeline-date {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 3rem;
+    padding-right: 1rem;
+  }
+
+  .timeline::after {
+    left: 20px;
+  }
+
+  .timeline-dot {
+    left: 10px;
+  }
+
+  .timeline-item .timeline-box {
+    text-align: left;
+    margin: 0;
+  }
 }

@@ -1,27 +1,156 @@
+/* Navbar Base */
 .navbar {
-  transition: all 0.4s ease;
-}
-
-.navbar-scrolled {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
   backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
-.dark-mode {
-  background-color: #121212;
-  color: #eee;
+body.dark .navbar {
+  background-color: rgba(18, 18, 18, 0.9);
 }
 
-.dark-mode .card {
-  background-color: #1e1e1e;
-  color: #ddd;
+/* Container */
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.dark-mode .navbar {
-  background-color: #1a1a1a !important;
+/* Logo */
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #007cf0;
+  text-decoration: none;
 }
 
-.dark-mode .nav-link {
-  color: #ddd !important;
+.logo-accent {
+  color: #00dfd8;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.dark .nav-links a {
+  color: #f0f0f0;
+}
+
+.nav-links a:hover {
+  color: #00c6ff;
+}
+
+/* Resume + Theme Button Container */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Resume button */
+.resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(to right, #007cf0, #00dfd8);
+  color: white;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.resume-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #00dfd8, #007cf0);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  color: #007cf0;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 124, 255, 0.1);
+}
+
+body.dark .theme-toggle {
+  color: #00dfd8;
+}
+
+/* Hamburger for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: #333;
+  transition: 0.3s;
+}
+
+body.dark .hamburger span {
+  background: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  body.dark .nav-links {
+    background: #121212;
+  }
 }

@@ -1,44 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../assets/Navbar.css';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMoon, FaSun, FaDownload } from 'react-icons/fa';
 
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+const Navbar = ({ darkMode, setDarkMode }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) setScrolled(true);
-      else setScrolled(false);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle('dark-mode', darkMode);
-  }, [darkMode]);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'navbar-dark bg-dark shadow-sm' : 'navbar-light bg-light'}`}>
-      <div className="container">
-        <a className="navbar-brand fw-bold" href="#home">Bhavik</a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
-            <li className="nav-item"><a className="nav-link" href="#projects">Projects</a></li>
-            <li className="nav-item"><a className="nav-link" href="#skills">Skills</a></li>
-            <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
-          </ul>
-          <button className="btn btn-sm btn-outline-secondary ms-3" onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
+    <nav className="navbar" data-aos="fade-down">
+      <div className="navbar-container">
+        <a href="#home" className="logo">
+          Bhavik &nbsp;&nbsp;&nbsp;&nbsp;<span className="logo-accent"></span>
+        </a>
+
+        <div className={`nav-links ${isOpen ? 'open' : ''}`}>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+
+          <div className="nav-buttons">
+            <a href="/Bhavik_Patel_Resume.pdf" className="resume-btn" download>
+              <FaDownload /> Resume
+            </a>
+
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="theme-toggle"
+              title="Toggle theme"
+            >
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </button>
+          </div>
+        </div>
+
+        <div className="hamburger" onClick={toggleMenu}>
+          <span />
+          <span />
+          <span />
         </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

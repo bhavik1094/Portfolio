@@ -1,30 +1,34 @@
 import React from 'react';
+import '../assets/About.css';
+import Lottie from 'lottie-react';
+import devAnimation from '../assets/dev-lottie.json'; // Or use online via URL
 
-function About() {
+const About = () => {
   return (
-    <section className="container py-5" id="about">
-      <div className="row align-items-center">
-        <div className="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
-          <img
-            src="https://avatars.githubusercontent.com/u/85128931?v=4"
-            alt="Bhavik Patel"
-            className="img-fluid rounded-4 shadow"
-          />
+    <section className="about-section" id="about">
+      <div className="about-container" data-aos="fade-up">
+        <div className="about-image">
+          <Lottie animationData={devAnimation} loop={true} />
         </div>
-        <div className="col-md-6" data-aos="fade-left">
-          <h2 className="mb-3">About Me</h2>
-          <p className="lead">
-            I'm a passionate Full Stack Developer with 4+ years of experience building scalable web applications using
-            <strong> .NET Core</strong>, <strong>React.js</strong>, and <strong>MongoDB</strong>. I specialize in creating clean, efficient, and responsive applications with robust backend architecture.
+
+        <div className="about-content">
+          <h2 className="about-heading">
+            About Me <span className="badge">Open to Work 💼</span>
+          </h2>
+          <p className="typing-text">
+            I’m a full-stack developer with 4+ years of experience building scalable SaaS platforms in healthcare and fintech domains.
           </p>
           <p>
-            I enjoy solving complex problems, optimizing code performance, and continuously learning new technologies. Let's build something amazing together.
+            I’ve led engineering of secure API portals and dashboards using React, .NET Core, and SQL. Recently, I’ve been creating AI agents using OpenAI, LangChain, and Ollama to automate workflows.
           </p>
-          <a href="#contact" className="btn btn-primary mt-3">Hire Me</a>
+          <p>
+            I love solving real-world problems with clean, scalable code. Let’s build something impactful together.
+          </p>
+          <a href="#contact" className="hire-button">Hire Me</a>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default About;

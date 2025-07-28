@@ -1,39 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/Contact.css';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
-function Contact() {
+const Contact = () => {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!form.name || !form.email || !form.message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // You can replace this with real email service like EmailJS/Formspree
+    console.log('Form submitted:', form);
+    setSubmitted(true);
+
+    setTimeout(() => {
+      setSubmitted(false);
+      setForm({ name: '', email: '', message: '' });
+    }, 2500);
+  };
+
   return (
-    <section id="contact" className="py-5">
-      <div className="container" data-aos="fade-up">
-        <h2 className="section-title text-center mb-5">
-          <span className="text-gradient">📬 Contact Me</span>
-        </h2>
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <form className="p-4 shadow-lg rounded-4 bg-white contact-form">
-              <div className="mb-3">
-                <label className="form-label fw-semibold">Name</label>
-                <input type="text" className="form-control" placeholder="Your Name" required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label fw-semibold">Email</label>
-                <input type="email" className="form-control" placeholder="Your Email" required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label fw-semibold">Message</label>
-                <textarea className="form-control" rows="5" placeholder="Your Message" required></textarea>
-              </div>
-              <div className="text-center">
-                <button type="submit" className="btn btn-primary px-4 py-2 rounded-pill">
-                  Send Message
-                </button>
-              </div>
-            </form>
+    <section className="contact-section" id="contact">
+      <h2 className="section-title text-gradient-orange" data-aos="fade-up">Contact Me</h2>
+
+      <div className="contact-grid" data-aos="fade-up">
+        {/* Left Side (Optional Image or Socials) */}
+        <div className="contact-info">
+          <h3>Let's Connect</h3>
+          <p>I’m open to freelance work, collaborations, or just a friendly hello.</p>
+          <div className="social-icons">
+            <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer"><FaGithub /></a>
+            <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+            <a href="mailto:youremail@example.com"><FaEnvelope /></a>
           </div>
         </div>
+
+        {/* Right Side (Form) */}
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            value={form.message}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="glow-button">
+            {submitted ? 'Message Sent 🎉' : 'Send Message'}
+          </button>
+        </form>
       </div>
     </section>
   );
-}
+};
 
 export default Contact;

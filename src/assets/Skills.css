@@ -1,29 +1,58 @@
+.skills-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
 .skill-card {
+  background: #f8f9fa;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   max-width: 220px;
-  background-color: #f8f9fa;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .skill-card:hover {
   transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Animate icon on hover */
-.skill-card i {
+.skill-icon {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 1rem;
   transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.2) rotate(3deg);
+  color: #00c6ff;
+}
+
+.skill-card h6 {
+  font-size: 1rem;
+  font-weight: 500;
   color: #333;
-}
-
-.skill-card:hover i {
-  transform: scale(1.2) rotate(5deg);
-  color: #007bff;
-}
-
-/* Optional: Add glowing effect */
-.skill-card:hover h6 {
-  color: #007bff;
-  text-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
 }

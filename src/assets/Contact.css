@@ -1,20 +1,121 @@
-.contact-form {
-  background-color: #fefefe;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.contact-form:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #f0f8ff;
+  text-align: center;
 }
 
 .section-title {
-  font-weight: 700;
   font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, #007bff, #00c6ff);
+.text-gradient-orange {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Two-column layout */
+.contact-grid {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Left: Info & Icons */
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.social-icons a {
+  margin-right: 1rem;
+  font-size: 1.8rem;
+  color: #007cf0;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #00dfd8;
+}
+
+/* Right: Form */
+.contact-form {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007cf0;
+}
+
+/* Glowing button */
+.glow-button {
+  background: linear-gradient(to right, #007cf0, #00dfd8);
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 124, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 124, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+  }
 }
