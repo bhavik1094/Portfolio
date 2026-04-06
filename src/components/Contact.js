@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import '../assets/Contact.css';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { GitHubIcon, LinkedInIcon } from './Icons';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((currentForm) => ({ ...currentForm, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.message) {
-      alert("Please fill in all fields.");
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       return;
     }
 
-    // You can replace this with real email service like EmailJS/Formspree
-    console.log('Form submitted:', form);
     setSubmitted(true);
 
     setTimeout(() => {
@@ -33,18 +30,29 @@ const Contact = () => {
       <h2 className="section-title text-gradient-orange" data-aos="fade-up">Contact Me</h2>
 
       <div className="contact-grid" data-aos="fade-up">
-        {/* Left Side (Optional Image or Socials) */}
         <div className="contact-info">
           <h3>Let's Connect</h3>
-          <p>I’m open to freelance work, collaborations, or just a friendly hello.</p>
+          <p>I'm open to freelance work, collaborations, or just a friendly hello.</p>
           <div className="social-icons">
-            <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer"><FaGithub /></a>
-            <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-            <a href="mailto:youremail@example.com"><FaEnvelope /></a>
+            <a
+              href="https://github.com/bhavik1094"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Bhavik Patel on GitHub"
+            >
+              <GitHubIcon />
+            </a>
+            <a
+              href="https://linkedin.com/in/bhavik1094"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Bhavik Patel on LinkedIn"
+            >
+              <LinkedInIcon />
+            </a>
           </div>
         </div>
 
-        {/* Right Side (Form) */}
         <form className="contact-form" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -52,6 +60,7 @@ const Contact = () => {
             placeholder="Your Name"
             value={form.name}
             onChange={handleChange}
+            aria-label="Your name"
             required
           />
           <input
@@ -60,6 +69,7 @@ const Contact = () => {
             placeholder="Your Email"
             value={form.email}
             onChange={handleChange}
+            aria-label="Your email"
             required
           />
           <textarea
@@ -68,10 +78,11 @@ const Contact = () => {
             rows="5"
             value={form.message}
             onChange={handleChange}
+            aria-label="Your message"
             required
           />
           <button type="submit" className="glow-button">
-            {submitted ? 'Message Sent 🎉' : 'Send Message'}
+            {submitted ? 'Message Sent' : 'Send Message'}
           </button>
         </form>
       </div>

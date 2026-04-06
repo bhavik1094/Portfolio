@@ -1,8 +1,32 @@
+.experience-section {
+  padding: 5rem 2rem;
+  background: #f8fafc;
+}
+
+.experience-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .section-title {
   font-size: 2.5rem;
   background: linear-gradient(to right, #007bff, #00c6ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.experience-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.experience-title-icon {
+  font-size: 2rem;
 }
 
 .timeline-item {
@@ -18,14 +42,38 @@
   transform: translateY(-5px);
 }
 
+.experience-entry + .experience-entry {
+  margin-top: 2rem;
+}
+
 .company {
   font-size: 1.25rem;
 }
 
-ul li {
+.company-heading {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+.company-role {
+  color: #2563eb;
+}
+
+.company-meta {
+  margin: 0 0 0.75rem;
+  color: #64748b;
+}
+
+.experience-points {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.experience-points li {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+
 .text-gradient-blue {
   background: linear-gradient(to right, #007bff, #00c6ff);
   -webkit-background-clip: text;
