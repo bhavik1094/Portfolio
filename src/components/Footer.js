@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/Footer.css';
-import { GitHubIcon, LinkedInIcon } from './Icons';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -9,26 +9,20 @@ const Footer = () => {
         <p className="footer-name">© {new Date().getFullYear()} Bhavik Patel. All rights reserved.</p>
 
         <div className="footer-socials">
-          <a
-            href="https://github.com/bhavik1094"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Visit Bhavik Patel on GitHub"
-          >
-            <GitHubIcon />
+          <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer">
+            <FaGithub />
           </a>
-          <a
-            href="https://linkedin.com/in/bhavik1094"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Visit Bhavik Patel on LinkedIn"
-          >
-            <LinkedInIcon />
+          <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer">
+            <FaLinkedin />
+          </a>
+          <a href="mailto:youremail@example.com">
+            <FaEnvelope />
           </a>
         </div>
       </div>
 
-      <a href="#home" className="scroll-top" aria-label="Scroll back to top">↑</a>
+      {/* Optional scroll to top */}
+      <a href="#home" className="scroll-top">↑</a>
     </footer>
   );
 };

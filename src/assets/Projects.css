@@ -30,15 +30,6 @@
   transition: transform 0.3s ease;
   background: white;
   cursor: pointer;
-  width: 100%;
-  border: none;
-  padding: 0;
-  text-align: inherit;
-}
-
-.project-card:focus-visible {
-  outline: 3px solid #007cf0;
-  outline-offset: 4px;
 }
 
 .project-card img {
@@ -121,7 +112,6 @@
 /* Modal Box */
 .modal-content {
   background: linear-gradient(135deg, #ffffff, #e6f7ff);
-  border: none;
   border-radius: 20px;
   padding: 2rem;
   width: 90%;
@@ -142,14 +132,6 @@
   font-weight: bold;
   color: #555;
   cursor: pointer;
-  background: transparent;
-  border: none;
-  line-height: 1;
-}
-
-.close-button:focus-visible {
-  outline: 2px solid #007cf0;
-  outline-offset: 4px;
 }
 
 /* Tags */

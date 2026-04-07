@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../assets/About.css';
 import Lottie from 'lottie-react';
+import devAnimation from '../assets/dev-lottie.json'; // Or use online via URL
 
 const About = () => {
-  const [animationData, setAnimationData] = useState(null);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    fetch(`${import.meta.env.BASE_URL}animations/dev-lottie.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (isMounted) {
-          setAnimationData(data);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          setAnimationData(null);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   return (
     <section className="about-section" id="about">
       <div className="about-container" data-aos="fade-up">
         <div className="about-image">
-          {animationData ? <Lottie animationData={animationData} loop={true} /> : null}
+          <Lottie animationData={devAnimation} loop={true} />
         </div>
 
         <div className="about-content">
