@@ -19,7 +19,7 @@ const About = () => {
             About Me <span className="badge">Open to Work</span>
           </h2>
           <p>
-            I&apos;m a full-stack developer with 4+ years of experience shipping secure SaaS platforms, internal dashboards, and integration-heavy products for healthcare and business teams.
+            I&apos;m a full-stack developer with 5+ years of experience shipping secure SaaS platforms, internal dashboards, and integration-heavy products for healthcare and business teams.
           </p>
           <p>
             My work spans React, ASP.NET Core, SQL Server, MongoDB, and modern API architecture, with recent AI automation using OpenAI, LangChain, and Ollama.
