@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/Hero.css';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { HiArrowRight, HiDownload } from 'react-icons/hi';
+import { HiArrowRight, HiDownload, HiEye } from 'react-icons/hi';
+import ResumeModal from './ResumeModal';
+import { useTranslation } from 'react-i18next';
 
-const techChips = ['React', 'TypeScript', '.NET Core', 'SQL Server', 'MongoDB', 'OpenAI'];
 const socials = [
   { href: 'https://github.com/bhavik1094', label: 'GitHub', icon: <FaGithub /> },
   { href: 'https://linkedin.com/in/bhavik1094', label: 'LinkedIn', icon: <FaLinkedin /> },
@@ -12,6 +13,11 @@ const socials = [
 ];
 
 const Hero = () => {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const { t } = useTranslation();
+  const techChips = t('hero.tech', { returnObjects: true });
+  const avatarPills = t('hero.avatarPills', { returnObjects: true });
+
   return (
     <section className="hero-section" id="home">
       <motion.div className="blob blob-one" animate={{ y: [0, 28, 0], x: [0, 18, 0] }} transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }} />
@@ -24,20 +30,21 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <span className="eyebrow">Available for Remote Full-Stack Roles</span>
-          <h1>Building scalable SaaS products with React, .NET & AI</h1>
+          <span className="eyebrow availability-badge">{t('hero.badge')}</span>
+          <h1>{t('hero.headline')}</h1>
           <p className="hero-tagline">
-            I&apos;m Bhavik Patel, a Full-Stack Engineer building secure APIs, modern dashboards, and AI-powered workflow automation.
+            {t('hero.subtext')}
           </p>
           <div className="tech-chip-row">
             {techChips.map((tech) => <span className="tech-chip" key={tech}>{tech}</span>)}
           </div>
           <div className="hero-actions">
-            <a href="#projects" className="button button-primary">View Projects <HiArrowRight /></a>
-            <a href="/Bhavik%20M%20Patel%20Resume.pdf" className="button button-secondary" download><HiDownload /> Download Resume</a>
-            <a href="#contact" className="button button-ghost">Contact Me</a>
+            <a href="#projects" className="button button-primary">{t('hero.viewProjects')} <HiArrowRight /></a>
+            <button className="button button-secondary" onClick={() => setIsResumeOpen(true)} type="button"><HiEye /> {t('hero.previewResume')}</button>
+            <a href="/Bhavik%20M%20Patel%20Resume.pdf" className="button button-secondary" download><HiDownload /> {t('hero.downloadResume')}</a>
+            <a href="#contact" className="button button-ghost">{t('hero.contactMe')}</a>
           </div>
-          <div className="hero-socials" aria-label="Social links">
+          <div className="hero-socials" aria-label={t('hero.socialLinks')}>
             {socials.map((social) => (
               <a href={social.href} aria-label={social.label} title={social.label} target={social.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" key={social.label}>
                 {social.icon}
@@ -55,16 +62,15 @@ const Hero = () => {
           <div className="avatar-glow" />
           <div className="initials-avatar">BP</div>
           <div className="avatar-meta">
-            <span>Senior Full-Stack Developer</span>
-            <strong>React + .NET + AI</strong>
+            <span>{t('hero.avatarRole')}</span>
+            <strong>{t('hero.avatarStack')}</strong>
           </div>
           <div className="avatar-stack">
-            <span>API Architecture</span>
-            <span>Dashboards</span>
-            <span>Automation</span>
+            {avatarPills.map((pill) => <span key={pill}>{pill}</span>)}
           </div>
         </motion.div>
       </div>
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 };

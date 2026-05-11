@@ -1,12 +1,15 @@
 import React from 'react';
 import '../assets/Footer.css';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-content portfolio-container">
-        <p className="footer-name">© {new Date().getFullYear()} Bhavik Patel. All rights reserved.</p>
+        <p className="footer-name">© {new Date().getFullYear()} {t('footer.rights')}</p>
 
         <div className="footer-socials">
           <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
@@ -15,7 +18,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <a href="#home" className="scroll-top" aria-label="Back to top">↑</a>
+      <a href="#home" className="scroll-top" aria-label={t('footer.backToTop')}>↑</a>
     </footer>
   );
 };

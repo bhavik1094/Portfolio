@@ -2,49 +2,19 @@ import React from 'react';
 import '../assets/Experience.css';
 import { MdWorkHistory } from 'react-icons/md';
 import { motion } from 'framer-motion';
-
-const roles = [
-  {
-    company: 'Valcz India Pvt Ltd',
-    role: 'Software Engineer',
-    period: 'July 2025-Present',
-    tech: ['ASP.NET Core', 'React', 'MongoDB', 'Docker', 'Azure DevOps'],
-    points: [
-      'Build scalable backend APIs using clean Controller-Service-Repository structure.',
-      'Develop React + TypeScript dashboards with Tailwind CSS.',
-      'Implement JWT authentication, MongoDB persistence, and request tracking.',
-    ],
-  },
-  {
-    company: 'Sikka.ai',
-    role: 'Software Engineer',
-    period: 'Apr 2021-Jun 2025',
-    tech: ['React', 'ASP.NET Core', 'SQL Server', 'OpenAI', 'LangChain'],
-    points: [
-      'Built API and Finance portals used by 500+ healthcare partners.',
-      'Developed secure REST APIs, dashboards, analytics, and financial workflows.',
-      'Built AI automation agents using OpenAI, LangChain, and Ollama.',
-    ],
-  },
-  {
-    company: 'Knovos',
-    role: 'Software Engineering Intern',
-    period: 'Dec 2018-May 2019',
-    tech: ['ASP.NET', 'C#', 'SQL', 'Web Forms'],
-    points: [
-      'Maintained and enhanced existing ASP.NET projects.',
-      'Collaborated with senior developers to deliver stable product features.',
-    ],
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 function Experience() {
+  const { t } = useTranslation();
+  const roles = t('experience.roles', { returnObjects: true });
+
   return (
     <section className="experience-section" id="experience">
       <div className="portfolio-container">
         <motion.div className="section-heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="section-kicker"><MdWorkHistory /> Career Timeline</span>
-          <h2 className="section-title text-gradient-blue">Experience</h2>
+          <span className="section-kicker"><MdWorkHistory /> {t('experience.kicker')}</span>
+          <h2 className="section-title text-gradient-blue">{t('experience.title')}</h2>
+          <p>{t('experience.intro')}</p>
         </motion.div>
 
         <div className="timeline premium-timeline">

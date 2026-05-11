@@ -1,0 +1,192 @@
+{
+  "language": {
+    "label": "Language",
+    "placeholder": "Select language",
+    "ariaLabel": "Select portfolio language"
+  },
+  "nav": {
+    "brand": "Bhavik",
+    "availability": "Remote Full-Stack",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact",
+    "resume": "Resume",
+    "toggleTheme": "Toggle theme",
+    "toggleNavigation": "Toggle navigation"
+  },
+  "hero": {
+    "badge": "Available for Remote Full-Stack Opportunities",
+    "headline": "Building scalable SaaS products with React, .NET & AI",
+    "subtext": "I'm Bhavik Patel, a Full-Stack Engineer building secure APIs, modern dashboards, and AI-powered workflow automation.",
+    "tech": ["React", "TypeScript", ".NET Core", "SQL Server", "MongoDB", "OpenAI"],
+    "viewProjects": "View Projects",
+    "previewResume": "Preview Resume",
+    "downloadResume": "Download Resume",
+    "contactMe": "Contact Me",
+    "socialLinks": "Social links",
+    "avatarRole": "Senior Full-Stack Developer",
+    "avatarStack": "React + .NET + AI",
+    "avatarPills": ["API Architecture", "Dashboards", "Automation"]
+  },
+  "about": {
+    "title": "About Me",
+    "badge": "Open to Work",
+    "paragraphs": [
+      "I'm a full-stack developer with 5+ years of experience shipping secure SaaS platforms, internal dashboards, and integration-heavy products for healthcare and business teams.",
+      "My work spans React, ASP.NET Core, SQL Server, MongoDB, and modern API architecture, with recent AI automation using OpenAI, LangChain, and Ollama.",
+      "I bring a product-minded engineering style to remote teams: clean interfaces, traceable backend systems, practical automation, and code that is easy to grow."
+    ],
+    "stats": ["5+ Years Experience", "500+ Partners Served", "SaaS + AI Experience"],
+    "hireMe": "Hire Me"
+  },
+  "working": {
+    "kicker": "Currently Working With",
+    "title": "Modern product stack",
+    "ariaLabel": "Currently working technologies",
+    "technologies": ["React", "TypeScript", "ASP.NET Core", "C#", "SQL Server", "MongoDB", "OpenAI", "LangChain", "Tailwind CSS", "Docker", "Azure DevOps"]
+  },
+  "projects": {
+    "kicker": "Featured Work",
+    "title": "Projects",
+    "intro": "Recruiter-friendly case studies focused on secure APIs, SaaS workflows, dashboards, and AI automation.",
+    "featuredKicker": "Featured Project",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "closeDetails": "Close project details",
+    "featured": {
+      "title": "AI TaskFlow",
+      "overview": "A production-style full-stack SaaS task management platform built to demonstrate secure auth, role-aware workflows, analytics dashboards, and maintainable React + .NET architecture.",
+      "architecture": ["Controller-Service-Repository backend", "JWT + RBAC authorization", "Typed React dashboard modules", "SQL Server relational workflow data"],
+      "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "React + TypeScript frontend", "ASP.NET Core backend", "SQL Server", "Dashboard analytics", "Projects & Tasks management"],
+      "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"]
+    },
+    "items": [
+      {
+        "title": "AI TaskFlow",
+        "description": "Full-stack SaaS task management platform with React, .NET Core, JWT auth, role-based access, SQL Server, dashboard, projects and tasks.",
+        "technologies": ["React", "TypeScript", ".NET Core", "SQL Server", "JWT", "Tailwind"],
+        "previewTitle": "AI TaskFlow Dashboard"
+      },
+      {
+        "title": "Employee Management Portal",
+        "description": "Role-based full-stack portal with admin and employee dashboards, secure access, and clean operational workflows.",
+        "technologies": ["React", "ASP.NET Core", "SQL Server", "JWT"],
+        "previewTitle": "Login Page"
+      },
+      {
+        "title": "API Portal",
+        "description": "Developer portal for API key management, analytics, and secure integrations.",
+        "technologies": ["React", ".NET Core", "REST APIs", "Swagger"],
+        "previewTitle": "Task Management"
+      },
+      {
+        "title": "Finance Portal",
+        "description": "Finance dashboard for invoice generation, payment tracking, reconciliation, and reports.",
+        "technologies": ["React", ".NET Core", "SQL Server", "Reporting"],
+        "previewTitle": "Analytics"
+      }
+    ]
+  },
+  "experience": {
+    "kicker": "Career Timeline",
+    "title": "Experience",
+    "intro": "Impact-focused engineering across SaaS portals, secure APIs, dashboards, and AI automation.",
+    "roles": [
+      {
+        "company": "Valcz India Pvt Ltd",
+        "role": "Software Engineer",
+        "period": "July 2025-Present",
+        "tech": ["ASP.NET Core", "React", "MongoDB", "Docker", "Azure DevOps"],
+        "points": ["Built scalable backend APIs using Controller-Service-Repository architecture.", "Developed React + TypeScript dashboards with reusable component systems.", "Implemented JWT authentication, MongoDB persistence, and API tracking systems."]
+      },
+      {
+        "company": "Sikka.ai",
+        "role": "Software Engineer",
+        "period": "Apr 2021-Jun 2025",
+        "tech": ["React", "ASP.NET Core", "SQL Server", "OpenAI", "LangChain"],
+        "points": ["Built API and Finance portals used by 500+ healthcare partners.", "Developed secure REST APIs, dashboards, analytics, and financial workflows.", "Built AI automation agents using OpenAI, LangChain, and Ollama."]
+      },
+      {
+        "company": "Knovos",
+        "role": "Software Engineering Intern",
+        "period": "Dec 2018-May 2019",
+        "tech": ["ASP.NET", "C#", "SQL", "Web Forms"],
+        "points": ["Maintained and enhanced existing ASP.NET projects.", "Collaborated with senior developers to deliver stable product features."]
+      }
+    ]
+  },
+  "skills": {
+    "kicker": "Technical Toolkit",
+    "title": "Skills",
+    "groups": [
+      { "title": "Frontend", "items": ["React", "TypeScript", "JavaScript", "Tailwind", "HTML", "CSS"] },
+      { "title": "Backend", "items": ["ASP.NET Core", "C#", "REST APIs", "Entity Framework", "JWT"] },
+      { "title": "Database", "items": ["SQL Server", "MongoDB", "MySQL"] },
+      { "title": "DevOps & Tools", "items": ["Git", "Docker", "Azure DevOps", "Postman", "Swagger"] },
+      { "title": "AI & Automation", "items": ["OpenAI", "LangChain", "Ollama", "Prompt Engineering"] }
+    ]
+  },
+  "mindset": {
+    "kicker": "Engineering Mindset",
+    "title": "Built for product teams",
+    "intro": "I focus on maintainable systems, secure workflows, and interfaces teams can keep extending after launch.",
+    "principles": ["Scalable APIs", "Clean Architecture", "JWT Security", "RBAC", "Performance Optimization", "AI Integrations", "Reusable Components", "Full-Stack SaaS Development"]
+  },
+  "education": {
+    "kicker": "Academic Background",
+    "title": "Education",
+    "cgpa": "CGPA",
+    "items": [
+      { "degree": "Bachelor in Computer Applications", "institution": "Sardar Patel University", "period": "2013-2016", "cgpa": "8.06", "description": "Built a strong foundation in programming, database design, and web application fundamentals." },
+      { "degree": "Masters in Computer Applications", "institution": "Sardar Patel University", "period": "2017-2019", "cgpa": "7.5", "description": "Advanced software engineering studies focused on application architecture and full-stack development." }
+    ]
+  },
+  "achievements": {
+    "kicker": "Wins & Proof",
+    "title": "Achievements",
+    "items": [
+      { "title": "Winner - Agent Hackathon 2025", "description": "Built a practical AI workflow agent using LangChain and OpenAI for real-time knowledge automation." },
+      { "title": "Winner - LLM Bot Battle 2024", "description": "Designed and shipped an LLM-powered assistant experience for fast, accurate workflow support." },
+      { "title": "Full Stack SaaS Portfolio Project - AI TaskFlow", "description": "Created a full-stack SaaS task platform with auth, roles, dashboard views, and production-style architecture." }
+    ]
+  },
+  "github": {
+    "kicker": "GitHub Activity",
+    "title": "Proof of building",
+    "cards": [
+      { "title": "Contributions", "value": "Consistent", "detail": "Active project building, SaaS experiments, and production-style portfolio work." },
+      { "title": "Streak", "value": "Shipping", "detail": "Focused on frequent iteration across React, .NET, API, and AI automation work." },
+      { "title": "Top Languages", "value": "TS / C# / SQL", "detail": "Frontend systems, backend APIs, database workflows, and automation tooling." }
+    ]
+  },
+  "contact": {
+    "kicker": "Available Remotely",
+    "title": "Let's build scalable products together.",
+    "subtitle": "Available for remote full-stack engineering opportunities.",
+    "directLinks": "Direct links",
+    "description": "Reach out for senior full-stack roles, SaaS product work, API platforms, or AI workflow automation.",
+    "email": "Email",
+    "linkedIn": "LinkedIn",
+    "github": "GitHub",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Your Message",
+    "requiredError": "Please fill in all fields.",
+    "sent": "Message Sent",
+    "send": "Send Message"
+  },
+  "resume": {
+    "kicker": "Resume Preview",
+    "title": "Bhavik Patel - Full-Stack Engineer",
+    "download": "Download Resume",
+    "close": "Close Preview",
+    "closeAria": "Close resume preview",
+    "iframeTitle": "Bhavik Patel Resume Preview"
+  },
+  "footer": {
+    "rights": "Bhavik Patel. All rights reserved.",
+    "backToTop": "Back to top"
+  }
+}

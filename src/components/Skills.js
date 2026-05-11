@@ -1,22 +1,18 @@
 import React from 'react';
 import '../assets/Skills.css';
 import { motion } from 'framer-motion';
-
-const skillGroups = [
-  { title: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'Tailwind', 'HTML', 'CSS'] },
-  { title: 'Backend', items: ['ASP.NET Core', 'C#', 'REST APIs', 'Entity Framework', 'JWT'] },
-  { title: 'Database', items: ['SQL Server', 'MongoDB', 'MySQL'] },
-  { title: 'DevOps & Tools', items: ['Git', 'Docker', 'Azure DevOps', 'Postman', 'Swagger'] },
-  { title: 'AI & Automation', items: ['OpenAI', 'LangChain', 'Ollama', 'Prompt Engineering'] },
-];
+import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
+  const { t } = useTranslation();
+  const skillGroups = t('skills.groups', { returnObjects: true });
+
   return (
     <section className="skills-section" id="skills">
       <div className="portfolio-container">
         <motion.div className="section-heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="section-kicker">Technical Toolkit</span>
-          <h2 className="section-title text-gradient-blue">Skills</h2>
+          <span className="section-kicker">{t('skills.kicker')}</span>
+          <h2 className="section-title text-gradient-blue">{t('skills.title')}</h2>
         </motion.div>
 
         <div className="skills-grid">
