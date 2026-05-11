@@ -8,7 +8,7 @@ import LanguageSelector from './LanguageSelector';
 const Navbar = ({ darkMode, setDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
-  const resumePath = '/Bhavik%20M%20Patel%20Resume.pdf';
+  const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
   const links = [
     { label: t('nav.projects'), href: '#projects' },
     { label: t('nav.skills'), href: '#skills' },

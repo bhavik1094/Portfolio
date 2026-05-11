@@ -11,6 +11,7 @@ const socials = [
   { href: 'https://linkedin.com/in/bhavik1094', label: 'LinkedIn', icon: <FaLinkedin /> },
   { href: 'mailto:youremail@example.com', label: 'Email', icon: <FaEnvelope /> },
 ];
+const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
 
 const Hero = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -41,7 +42,7 @@ const Hero = () => {
           <div className="hero-actions">
             <a href="#projects" className="button button-primary">{t('hero.viewProjects')} <HiArrowRight /></a>
             <button className="button button-secondary" onClick={() => setIsResumeOpen(true)} type="button"><HiEye /> {t('hero.previewResume')}</button>
-            <a href="/Bhavik%20M%20Patel%20Resume.pdf" className="button button-secondary" download><HiDownload /> {t('hero.downloadResume')}</a>
+            <a href={resumePath} className="button button-secondary" download><HiDownload /> {t('hero.downloadResume')}</a>
             <a href="#contact" className="button button-ghost">{t('hero.contactMe')}</a>
           </div>
           <div className="hero-socials" aria-label={t('hero.socialLinks')}>

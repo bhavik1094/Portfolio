@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { HiDownload } from 'react-icons/hi';
 import { useTranslation } from 'react-i18next';
 
-const resumePath = '/Bhavik%20M%20Patel%20Resume.pdf';
+const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
 
 const ResumeModal = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
