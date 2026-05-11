@@ -1,40 +1,41 @@
 import React from 'react';
 import '../assets/Achievements.css';
+import { FaLaptopCode, FaRobot, FaTrophy } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const achievements = [
   {
-    title: 'Agent Hackathon 2024 Winner',
-    icon: 'bi-trophy-fill',
-    description: '1st place for building a LangChain + OpenAI-powered knowledge agent for real-time document querying.',
+    title: 'Winner - Agent Hackathon 2025',
+    icon: <FaTrophy />,
+    description: 'Built a practical AI workflow agent using LangChain and OpenAI for real-time knowledge automation.',
   },
   {
-    title: 'Bot Battle Finalist',
-    icon: 'bi-robot',
-    description: 'Designed a customer support bot using Python, Rasa, and NLP to handle 1000+ queries/day.',
+    title: 'Winner - LLM Bot Battle 2024',
+    icon: <FaRobot />,
+    description: 'Designed and shipped an LLM-powered assistant experience for fast, accurate workflow support.',
   },
   {
-    title: 'Fullstack Dev Challenge',
-    icon: 'bi-laptop',
-    description: 'Built a complete MERN + .NET stack Employee Portal during a 36-hour sprint challenge.',
+    title: 'Full Stack SaaS Portfolio Project - AI TaskFlow',
+    icon: <FaLaptopCode />,
+    description: 'Created a full-stack SaaS task platform with auth, roles, dashboard views, and production-style architecture.',
   },
 ];
 
 function Achievements() {
   return (
-    <section className="py-5 bg-light" id="achievements">
-      <div className="container" data-aos="fade-up">
-        <h2 className="text-center mb-5 section-title text-gradient-purple">
-          🏆 Achievements & Hackathons 
-        </h2>
-        <div className="row g-4">
+    <section className="achievements-section" id="achievements">
+      <div className="portfolio-container">
+        <motion.div className="section-heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <span className="section-kicker">Wins & Proof</span>
+          <h2 className="section-title text-gradient-blue">Achievements</h2>
+        </motion.div>
+        <div className="achievement-grid">
           {achievements.map((item, index) => (
-            <div className="col-md-4" key={index} data-aos="flip-left" data-aos-delay={index * 100}>
-              <div className="card h-100 shadow-lg achievement-card text-center p-4">
-                <i className={`bi ${item.icon} display-4 text-primary mb-3`}></i>
-                <h5 className="fw-bold">{item.title}</h5>
-                <p className="text-muted">{item.description}</p>
-              </div>
-            </div>
+            <motion.article className="achievement-card glass-card" key={item.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ y: -8 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }}>
+              <div className="achievement-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </motion.article>
           ))}
         </div>
       </div>

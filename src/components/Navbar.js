@@ -1,28 +1,37 @@
 import React, { useState } from 'react';
 import '../assets/Navbar.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMoon, FaSun, FaDownload } from 'react-icons/fa';
+import { FaMoon, FaSun, FaDownload } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Navbar = ({ darkMode, setDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const resumePath = '/Bhavik%20M%20Patel%20Resume.pdf';
+  const links = ['Projects', 'Skills', 'Experience', 'Education', 'Contact'];
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((open) => !open);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="navbar" data-aos="fade-down">
+    <motion.nav
+      className="navbar"
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <div className="navbar-container">
-        <a href="#home" className="logo">
-          Bhavik &nbsp;&nbsp;&nbsp;&nbsp;<span className="logo-accent"></span>
+        <a href="#home" className="logo" onClick={closeMenu}>
+          Bhavik<span className="logo-accent">.</span>
         </a>
 
         <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
+          {links.map((link) => (
+            <a href={`#${link.toLowerCase()}`} key={link} onClick={closeMenu}>
+              {link}
+            </a>
+          ))}
 
           <div className="nav-buttons">
-            <a href="/Bhavik_Patel_Resume.pdf" className="resume-btn" download>
+            <a href={resumePath} className="resume-btn" download>
               <FaDownload /> Resume
             </a>
 
@@ -30,19 +39,20 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               onClick={() => setDarkMode(!darkMode)}
               className="theme-toggle"
               title="Toggle theme"
+              type="button"
             >
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
           </div>
         </div>
 
-        <div className="hamburger" onClick={toggleMenu}>
+        <button className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle navigation" type="button">
           <span />
           <span />
           <span />
-        </div>
+        </button>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
