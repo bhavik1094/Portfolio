@@ -1,34 +1,403 @@
-.section-title {
-  font-size: 2.5rem;
-  background: linear-gradient(to right, #007bff, #00c6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Experience & Timeline Premium SaaS Design */
+.experience-section,
+.education-section {
+  position: relative;
+  padding: 6rem 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.timeline-wrapper {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Ambient subtle blue radial glow ONLY behind the timeline */
+.timeline-radial-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 650px;
+  height: 95%;
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15), transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Centered vertical timeline container */
+.premium-timeline {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding: 1.5rem 0;
+}
+
+/* 2px glowing cyan -> blue gradient connector line */
+.premium-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, #38bdf8 0%, #2dd4bf 50%, rgba(56, 189, 248, 0.2) 100%);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
 }
 
 .timeline-item {
-  background-color: white;
-  padding: 1.5rem;
-  border-left: 4px solid #007bff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 0.5rem;
-  transition: transform 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.timeline-item:hover {
-  transform: translateY(-5px);
+/* Desktop Alternating Cards (Left / Right) */
+.timeline-item-left {
+  justify-content: flex-start;
+  padding-right: 50%;
 }
 
-.company {
-  font-size: 1.25rem;
+.timeline-item-right {
+  justify-content: flex-end;
+  padding-left: 50%;
 }
 
-ul li {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+/* Circular Glowing Date Node */
+.timeline-node-container {
+  position: absolute;
+  left: 50%;
+  top: 2rem;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.text-gradient-blue {
-  background: linear-gradient(to right, #007bff, #00c6ff);
+
+.timeline-node-badge {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.92);
+  border: 2px solid rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.45), inset 0 0 12px rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(16px);
+  cursor: default;
+}
+
+.timeline-node-badge span {
+  font-size: 0.85rem;
+  font-weight: 850;
+  color: #f8fafc;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* Premium Dark Glass Card (560px - 620px width) */
+.experience-dark-card {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2.2rem;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+  transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.timeline-item-left .experience-dark-card {
+  margin-right: 2.5rem;
+}
+
+.timeline-item-right .experience-dark-card {
+  margin-left: 2.5rem;
+}
+
+.experience-dark-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 32px 90px -15px rgba(14, 165, 233, 0.3);
+}
+
+/* Header Top */
+.role-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.role-company-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* Circular Glowing Badge for Logo */
+.company-logo-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-size: 1.35rem;
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+  flex-shrink: 0;
+}
+
+.edu-logo-circle {
+  background: rgba(45, 212, 191, 0.14);
+  border-color: rgba(45, 212, 191, 0.3);
+  color: #2dd4bf;
+  box-shadow: 0 0 24px rgba(45, 212, 191, 0.35);
+}
+
+/* Company/Degree Name: 28px Bold White */
+.company-name-bold {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 850;
+  color: #f8fafc;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+/* Role Title: 20px Cyan Gradient */
+.role-title-cyan {
+  margin: 0.35rem 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* Duration Pill Badge: 16px Blue/Green */
+.period-badge-cyan {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  color: #2dd4bf;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* CGPA Pill */
+.cgpa-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  color: #f59e0b;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.edu-meta-pills {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.edu-description {
+  margin: 1.1rem 0 0;
+  color: #cbd5e1;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* Sub Meta Badges (Type & Location) */
+.role-sub-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* Tech Stack Icon Chips */
+.experience-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.4rem 0 1.2rem;
+}
+
+.experience-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.experience-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.chip-icon {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Feature Rows with Check Icons (17px Font) */
+.role-impact-points {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.role-impact-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  color: #e2e8f0;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.check-bullet-icon {
+  flex-shrink: 0;
+  color: #38bdf8;
+  font-size: 1.3rem;
+  margin-top: 0.15rem;
+}
+
+/* Tablet & Mobile Responsive Rules */
+@media (max-width: 1024px) {
+  .premium-timeline::before {
+    left: 2rem;
+    transform: none;
+  }
+
+  .timeline-node-container {
+    left: 2rem;
+    top: 2.2rem;
+  }
+
+  .timeline-item,
+  .timeline-item-left,
+  .timeline-item-right {
+    justify-content: flex-start;
+    padding-left: 5rem;
+    padding-right: 0;
+  }
+
+  .timeline-item-left .experience-dark-card,
+  .timeline-item-right .experience-dark-card {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  .edu-meta-pills {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-section,
+  .education-section {
+    padding: 4rem 0;
+  }
+
+  .premium-timeline {
+    gap: 2.5rem;
+  }
+
+  .premium-timeline::before {
+    left: 0.75rem;
+  }
+
+  .timeline-node-container {
+    left: 0.75rem;
+    top: 1.8rem;
+  }
+
+  .timeline-node-badge {
+    padding: 0.3rem 0.65rem;
+  }
+
+  .timeline-node-badge span {
+    font-size: 0.75rem;
+  }
+
+  .timeline-item,
+  .timeline-item-left,
+  .timeline-item-right {
+    padding-left: 3rem;
+  }
+
+  .experience-dark-card {
+    padding: 1.5rem 1.2rem;
+    border-radius: 20px;
+  }
+
+  .company-name-bold {
+    font-size: 22px;
+  }
+
+  .role-title-cyan {
+    font-size: 17px;
+  }
+
+  .period-badge-cyan {
+    font-size: 14px;
+  }
+
+  .role-impact-points li {
+    font-size: 15px;
+  }
+
+  .role-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}

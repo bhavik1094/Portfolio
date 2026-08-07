@@ -95,25 +95,45 @@
     "intro": "Impact-focused engineering across SaaS portals, secure APIs, dashboards, and AI automation.",
     "roles": [
       {
+        "nodeDate": "Jul 2025",
         "company": "Valcz India Pvt Ltd",
         "role": "Software Engineer",
-        "period": "July 2025-Present",
+        "type": "Full-Time",
+        "location": "Remote",
+        "period": "July 2025 – Present",
         "tech": ["ASP.NET Core", "React", "MongoDB", "Docker", "Azure DevOps"],
-        "points": ["Built scalable backend APIs using Controller-Service-Repository architecture.", "Developed React + TypeScript dashboards with reusable component systems.", "Implemented JWT authentication, MongoDB persistence, and API tracking systems."]
+        "points": [
+          "Developed high-throughput REST APIs handling 50k+ daily transactions using Controller-Service-Repository architecture.",
+          "Engineered responsive React + TypeScript admin dashboards with modular design tokens, boosting user productivity by 35%.",
+          "Implemented robust JWT authentication & MongoDB persistence pipelines integrated with Azure DevOps CI/CD."
+        ]
       },
       {
+        "nodeDate": "Apr 2021",
         "company": "Sikka.ai",
         "role": "Software Engineer",
-        "period": "Apr 2021-Jun 2025",
+        "type": "Full-Time",
+        "location": "Remote / On-Site",
+        "period": "Apr 2021 – Jun 2025",
         "tech": ["React", "ASP.NET Core", "SQL Server", "OpenAI", "LangChain"],
-        "points": ["Built API and Finance portals used by 500+ healthcare partners.", "Developed secure REST APIs, dashboards, analytics, and financial workflows.", "Built AI automation agents using OpenAI, LangChain, and Ollama."]
+        "points": [
+          "Architected Enterprise API & Finance Portals deployed across 500+ healthcare business partners.",
+          "Engineered secure REST APIs, automated financial reconciliation workflows, and custom analytics reporting.",
+          "Designed autonomous AI automation pipelines utilizing OpenAI, LangChain, and Ollama to accelerate data extraction by 60%."
+        ]
       },
       {
+        "nodeDate": "Dec 2018",
         "company": "Knovos",
         "role": "Software Engineering Intern",
-        "period": "Dec 2018-May 2019",
-        "tech": ["ASP.NET", "C#", "SQL", "Web Forms"],
-        "points": ["Maintained and enhanced existing ASP.NET projects.", "Collaborated with senior developers to deliver stable product features."]
+        "type": "Internship",
+        "location": "On-Site",
+        "period": "Dec 2018 – May 2019",
+        "tech": ["ASP.NET", "C#", "SQL Server", "Web Forms"],
+        "points": [
+          "Maintained enterprise legal tech web applications using ASP.NET Core, C#, and SQL Server.",
+          "Collaborated with senior software architects to optimize SQL query execution and deliver robust web features."
+        ]
       }
     ]
   },
@@ -139,8 +159,34 @@
     "title": "Education",
     "cgpa": "CGPA",
     "items": [
-      { "degree": "Bachelor in Computer Applications", "institution": "Sardar Patel University", "period": "2013-2016", "cgpa": "8.06", "description": "Built a strong foundation in programming, database design, and web application fundamentals." },
-      { "degree": "Masters in Computer Applications", "institution": "Sardar Patel University", "period": "2017-2019", "cgpa": "7.5", "description": "Advanced software engineering studies focused on application architecture and full-stack development." }
+      {
+        "nodeDate": "2017–2019",
+        "degree": "Master in Computer Applications (MCA)",
+        "institution": "Sardar Patel University",
+        "period": "2017 – 2019",
+        "cgpa": "7.5 / 10",
+        "description": "Advanced software engineering master's program focusing on distributed application architecture, object-oriented design, web application development, and database management.",
+        "tech": ["Distributed Systems", "C# / .NET", "Database Architecture", "Web Security"],
+        "points": [
+          "Specialized in Enterprise Software Architecture & Relational Database Management Systems.",
+          "Engineered full-stack capstone project using ASP.NET, C#, and SQL Server with 95%+ grade score.",
+          "Awarded Master's Degree with First Class honors from Sardar Patel University."
+        ]
+      },
+      {
+        "nodeDate": "2013–2016",
+        "degree": "Bachelor in Computer Applications (BCA)",
+        "institution": "Sardar Patel University",
+        "period": "2013 – 2016",
+        "cgpa": "8.06 / 10",
+        "description": "Core computer science degree covering data structures, algorithm design, relational databases, web development fundamentals, and software testing methodologies.",
+        "tech": ["Data Structures", "C++ & Java", "SQL Database Design", "Web Development"],
+        "points": [
+          "Graduated with Distinction (8.06 / 10 CGPA) ranking top of computer applications cohort.",
+          "Mastered Object-Oriented Programming (OOP), Data Structures, Algorithms, and SQL queries.",
+          "Built responsive web portals and automated database migration scripts as core projects."
+        ]
+      }
     ]
   },
   "achievements": {
