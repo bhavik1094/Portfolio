@@ -1,71 +1,108 @@
-# Getting Started with Create React App
+# 🚀 Bhavik Patel - Senior Full-Stack Engineer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, high-performance, single-page developer portfolio built for **Bhavik Patel**, Senior Full-Stack Engineer specializing in React, .NET Core, SQL Server/MongoDB, and AI-powered workflow automation.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Vite-6.3.5-646CFF?logo=vite)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.38.0-0055FF?logo=framer)
+![i18next](https://img.shields.io/badge/i18n-7_Languages-26A69A?logo=i18next)
+![Vitest](https://img.shields.io/badge/Vitest-3.2.4-6E9F18?logo=vitest)
+
+---
+
+## ✨ Features
+
+- 🎨 **Glassmorphism Dark UI**: Designed with CSS custom properties, backdrop blur, ambient gradient background animations, and custom typography.
+- 🌐 **7-Language i18n Support**: Instant client-side translation across English, Hindi, Gujarati, German, French, Spanish, and Japanese using `i18next` and custom flag selection dropdowns.
+- ⚡ **Optimized Vite Bundling**: Custom Rollup manual chunking for lightning-fast loads (`~6.5s` production build time).
+- 🎬 **Smooth Motion & Micro-interactions**: Powered by `framer-motion` section scroll animations and modal transitions.
+- 📄 **Live Resume Modal**: Interactive preview of `Bhavik M Patel Resume.pdf` with direct download capability.
+- 💼 **Recruiter Case Studies**: Detailed featured project card and interactive modal views for full-stack SaaS applications.
+- 📧 **Interactive Contact**: Form validation with pre-formatted `mailto:` client fallback.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend Core**: React 19, JavaScript (ES6+), HTML5, Vanilla CSS
+- **Bundler & Build Tool**: Vite 6 with `@vitejs/plugin-react`
+- **Animations & Graphics**: Framer Motion, Lottie React, React Icons
+- **Internationalization**: `i18next`, `react-i18next`, `react-select`
+- **Testing Framework**: Vitest, `@testing-library/react`, JSDOM
+- **Deployment Target**: GitHub Pages (`gh-pages`)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- npm `v9+`
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/bhavik1094/Portfolio.git
+
+# Navigate into project directory
+cd Portfolio
+
+# Install dependencies
+npm install
+```
+
+---
+
+## 📜 Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+```bash
+# Start development server with Hot Module Replacement (HMR)
+npm run dev
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Run Vitest unit & integration test suite
+npm test
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Build production distribution bundle in dist/
+npm run build
 
-### `npm test`
+# Preview local production build
+npm run preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Deploy production bundle to GitHub Pages
+npm run deploy
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏗 Architecture & Code Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── App.js                  # App root, dark theme state & i18n transition wrapper
+├── i18n.js                 # Language configuration & document attribute sync
+├── setupTests.js           # Test setup & JSDOM mocks
+├── assets/                 # Modular CSS files & design tokens (premium.css)
+├── components/             # Reusable UI sections
+│   ├── Navbar.js           # Header, navigation links & controls
+│   ├── Hero.js             # Hero banner & primary CTAs
+│   ├── Projects.js         # Case study grid & detail modals
+│   ├── Experience.js       # Career history timeline
+│   ├── Skills.js           # Tech toolkit grid
+│   ├── Contact.js          # Form validation & direct reach-out
+│   ├── ResumeModal.js      # PDF resume viewer overlay
+│   └── ...                 # Additional presentation components
+└── locales/                # Translation JSON key maps (en, hi, gu, de, fr, es, ja)
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 📬 Contact & Links
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# Portfolio" 
+- **Portfolio Repository**: [github.com/bhavik1094/Portfolio](https://github.com/bhavik1094/Portfolio)
+- **GitHub Profile**: [github.com/bhavik1094](https://github.com/bhavik1094)
+- **LinkedIn**: [linkedin.com/in/bhavik1094](https://linkedin.com/in/bhavik1094)
+- **Email**: [bmpatel1994@gmail.com](mailto:bmpatel1994@gmail.com)

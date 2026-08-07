@@ -5,10 +5,8 @@ test('renders the portfolio hero content and navigation', () => {
   render(<App />);
 
   expect(
-    screen.getByRole('heading', { name: /bhavik patel/i, level: 1 })
+    screen.getByRole('heading', { name: /building scalable saas products/i, level: 1 })
   ).toBeInTheDocument();
-  expect(
-    screen.getByRole('heading', { name: /full stack developer/i })
-  ).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
+  expect(screen.getAllByText(/bhavik patel/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByRole('link', { name: /contact/i }).length).toBeGreaterThan(0);
 });

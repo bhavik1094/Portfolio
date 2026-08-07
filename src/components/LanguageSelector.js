@@ -32,10 +32,10 @@ const selectStyles = {
     ...base,
     minHeight: 42,
     minWidth: 190,
-    background: 'rgba(255, 255, 255, 0.06)',
-    borderColor: state.isFocused ? 'rgba(20, 184, 166, 0.55)' : 'rgba(255, 255, 255, 0.10)',
+    background: 'var(--card)',
+    borderColor: state.isFocused ? 'var(--primary)' : 'var(--border)',
     borderRadius: 999,
-    boxShadow: state.isFocused ? '0 0 0 4px rgba(20, 184, 166, 0.12)' : 'none',
+    boxShadow: state.isFocused ? '0 0 0 4px rgba(37, 99, 235, 0.12)' : 'none',
     cursor: 'pointer',
     transition: '180ms ease',
   }),
@@ -45,31 +45,31 @@ const selectStyles = {
   }),
   singleValue: (base) => ({
     ...base,
-    color: '#f8fafc',
+    color: 'var(--text)',
     margin: 0,
   }),
   input: (base) => ({
     ...base,
-    color: '#f8fafc',
+    color: 'var(--text)',
   }),
   placeholder: (base) => ({
     ...base,
-    color: '#94a3b8',
+    color: 'var(--muted)',
   }),
   indicatorSeparator: () => ({ display: 'none' }),
   dropdownIndicator: (base, state) => ({
     ...base,
-    color: state.isFocused ? '#14b8a6' : '#94a3b8',
+    color: state.isFocused ? 'var(--primary)' : 'var(--muted)',
     paddingRight: 10,
   }),
   menu: (base) => ({
     ...base,
     overflow: 'hidden',
     marginTop: 10,
-    background: 'rgba(3, 7, 18, 0.94)',
-    border: '1px solid rgba(255, 255, 255, 0.10)',
+    background: 'var(--card-hover)',
+    border: '1px solid var(--border)',
     borderRadius: 18,
-    boxShadow: '0 24px 80px rgba(0, 0, 0, 0.45)',
+    boxShadow: 'var(--shadow)',
     backdropFilter: 'blur(24px)',
   }),
   menuList: (base) => ({
@@ -78,11 +78,11 @@ const selectStyles = {
   }),
   option: (base, state) => ({
     ...base,
-    color: '#f8fafc',
+    color: 'var(--text)',
     background: state.isSelected
-      ? 'linear-gradient(135deg, rgba(14, 165, 233, 0.28), rgba(20, 184, 166, 0.24))'
+      ? 'linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(13, 148, 136, 0.2))'
       : state.isFocused
-        ? 'rgba(255, 255, 255, 0.08)'
+        ? 'rgba(37, 99, 235, 0.08)'
         : 'transparent',
     borderRadius: 12,
     cursor: 'pointer',

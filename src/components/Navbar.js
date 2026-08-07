@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/Navbar.css';
 import { FaMoon, FaSun, FaDownload } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -7,6 +7,7 @@ import LanguageSelector from './LanguageSelector';
 
 const Navbar = ({ darkMode, setDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const { t } = useTranslation();
   const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
   const links = [
@@ -16,6 +17,23 @@ const Navbar = ({ darkMode, setDarkMode }) => {
     { label: t('nav.education'), href: '#education' },
     { label: t('nav.contact'), href: '#contact' },
   ];
+
+  useEffect(() => {
+    const sectionIds = ['home', 'projects', 'skills', 'experience', 'education', 'contact'];
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 140;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && scrollPos >= el.offsetTop) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsOpen((open) => !open);
   const closeMenu = () => setIsOpen(false);
@@ -28,33 +46,44 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="navbar-container">
-        <a href="#home" className="logo" onClick={closeMenu}>
-          {t('nav.brand')}<span className="logo-accent">.</span>
-        </a>
-        <span className="nav-availability availability-badge">{t('nav.availability')}</span>
+        <div className="navbar-brand-group">
+          <a href="#home" className="logo" onClick={closeMenu}>
+            {t('nav.brand')}<span className="logo-accent">.</span>
+          </a>
+          <span className="nav-availability availability-badge">{t('nav.availability')}</span>
+        </div>
 
         <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-          {links.map((link) => (
-            <a href={link.href} key={link.href} onClick={closeMenu}>
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const sectionId = link.href.substring(1);
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                href={link.href}
+                key={link.href}
+                className={isActive ? 'active' : ''}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+        </div>
 
-          <div className="nav-buttons">
-            <LanguageSelector />
-            <a href={resumePath} className="resume-btn" download>
-              <FaDownload /> {t('nav.resume')}
-            </a>
+        <div className="nav-buttons">
+          <LanguageSelector />
+          <a href={resumePath} className="resume-btn" download>
+            <FaDownload /> {t('nav.resume')}
+          </a>
 
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="theme-toggle"
-              title={t('nav.toggleTheme')}
-              type="button"
-            >
-              {darkMode ? <FaSun /> : <FaMoon />}
-            </button>
-          </div>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="theme-toggle"
+            title={t('nav.toggleTheme')}
+            type="button"
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
         </div>
 
         <button className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label={t('nav.toggleNavigation')} type="button">

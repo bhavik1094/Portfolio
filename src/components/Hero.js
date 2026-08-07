@@ -9,9 +9,10 @@ import { useTranslation } from 'react-i18next';
 const socials = [
   { href: 'https://github.com/bhavik1094', label: 'GitHub', icon: <FaGithub /> },
   { href: 'https://linkedin.com/in/bhavik1094', label: 'LinkedIn', icon: <FaLinkedin /> },
-  { href: 'mailto:youremail@example.com', label: 'Email', icon: <FaEnvelope /> },
+  { href: 'mailto:bmpatel1994@gmail.com', label: 'Email', icon: <FaEnvelope /> },
 ];
 const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
+const photoPath = `${import.meta.env.BASE_URL}Bhavik%20Patel%20Photo.jpeg`;
 
 const Hero = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -55,13 +56,19 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="avatar-card"
-          initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+          className="avatar-card glass-card"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+          transition={{
+            opacity: { duration: 0.8, delay: 0.15 },
+            scale: { duration: 0.8, delay: 0.15 },
+            y: { repeat: Infinity, duration: 6, ease: 'easeInOut' }
+          }}
         >
           <div className="avatar-glow" />
-          <div className="initials-avatar">BP</div>
+          <div className="hero-photo-wrapper">
+            <img src={photoPath} alt="Bhavik Patel" className="hero-photo" />
+          </div>
           <div className="avatar-meta">
             <span>{t('hero.avatarRole')}</span>
             <strong>{t('hero.avatarStack')}</strong>

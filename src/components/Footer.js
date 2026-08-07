@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="footer-socials">
           <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
           <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
-          <a href="mailto:youremail@example.com" aria-label="Email"><FaEnvelope /></a>
+          <a href="mailto:bmpatel1994@gmail.com" aria-label="Email"><FaEnvelope /></a>
         </div>
       </div>
 

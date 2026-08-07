@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://bhavik1094.github.io/Portfolio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhavik1094/Portfolio.git"
+  },
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

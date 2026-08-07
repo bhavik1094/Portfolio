@@ -64,16 +64,16 @@
     },
     "items": [
       {
-        "title": "AI TaskFlow",
-        "description": "Full-stack SaaS task management platform with React, .NET Core, JWT auth, role-based access, SQL Server, dashboard, projects and tasks.",
-        "technologies": ["React", "TypeScript", ".NET Core", "SQL Server", "JWT", "Tailwind"],
-        "previewTitle": "AI TaskFlow Dashboard"
+        "title": "Shree Krishna Nasta House",
+        "description": "Multi-language online food ordering & menu platform with interactive food categories, cart management, and responsive Vercel deployment.",
+        "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
+        "previewTitle": "Shree Krishna Nasta House"
       },
       {
-        "title": "Employee Management Portal",
-        "description": "Role-based full-stack portal with admin and employee dashboards, secure access, and clean operational workflows.",
-        "technologies": ["React", "ASP.NET Core", "SQL Server", "JWT"],
-        "previewTitle": "Login Page"
+        "title": "AI TaskFlow SaaS Platform",
+        "description": "Full-stack SaaS task management platform featuring secure JWT authentication, role-based access, interactive task workflows, and live Vercel deployment.",
+        "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "Vercel"],
+        "previewTitle": "AI TaskFlow Dashboard"
       },
       {
         "title": "API Portal",

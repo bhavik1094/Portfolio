@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/Experience.css';
 import { MdWorkHistory } from 'react-icons/md';
+import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -22,27 +23,34 @@ function Experience() {
             <motion.article
               className="timeline-item"
               key={`${role.company}-${role.period}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
             >
               <span className="timeline-dot" />
-              <div className="timeline-card glass-card">
+              <motion.div
+                className="timeline-card glass-card"
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ duration: 0.25 }}
+              >
                 <div className="role-header">
-                  <div>
-                    <h3>{role.company}</h3>
-                    <p>{role.role}</p>
+                  <div className="role-company-brand">
+                    <span className="company-icon"><FaBriefcase /></span>
+                    <div>
+                      <h3>{role.company}</h3>
+                      <p className="role-title">{role.role}</p>
+                    </div>
                   </div>
-                  <span>{role.period}</span>
+                  <span className="period-badge"><FaCalendarAlt /> {role.period}</span>
                 </div>
                 <div className="tech-tags">
                   {role.tech.map((tech) => <span className="tag" key={tech}>{tech}</span>)}
                 </div>
-                <ul>
+                <ul className="role-points">
                   {role.points.map((point) => <li key={point}>{point}</li>)}
                 </ul>
-              </div>
+              </motion.div>
             </motion.article>
           ))}
         </div>
