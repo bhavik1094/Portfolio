@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 const CurrentlyWorkingWith = () => {
+  const [isPaused, setIsPaused] = useState(false);
   const { t } = useTranslation();
   const technologies = t('working.technologies', { returnObjects: true });
   const marqueeItems = [...technologies, ...technologies];
@@ -15,10 +16,19 @@ const CurrentlyWorkingWith = () => {
           <h2 className="section-title text-gradient-blue">{t('working.title')}</h2>
         </motion.div>
 
-        <div className="tech-marquee glass-card" aria-label={t('working.ariaLabel')}>
-          <motion.div className="tech-marquee-track" animate={{ x: ['0%', '-50%'] }} transition={{ repeat: Infinity, duration: 24, ease: 'linear' }}>
+        <div
+          className="tech-marquee glass-card"
+          aria-label={t('working.ariaLabel')}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <motion.div
+            className="tech-marquee-track"
+            animate={isPaused ? { x: undefined } : { x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, duration: 26, ease: 'linear' }}
+          >
             {marqueeItems.map((tech, index) => (
-              <motion.span whileHover={{ y: -4, scale: 1.05 }} className="working-chip" key={`${tech}-${index}`}>
+              <motion.span whileHover={{ y: -4, scale: 1.08 }} className="working-chip" key={`${tech}-${index}`}>
                 {tech}
               </motion.span>
             ))}

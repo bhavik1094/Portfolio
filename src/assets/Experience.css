@@ -11,9 +11,10 @@
   position: relative;
   max-width: 1180px;
   margin: 0 auto;
+  width: 100%;
 }
 
-/* Ambient subtle blue radial glow ONLY behind the timeline */
+/* Ambient subtle blue radial glow behind the timeline */
 .timeline-radial-glow {
   position: absolute;
   top: 50%;
@@ -35,7 +36,8 @@
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
-  padding: 1.5rem 0;
+  padding: 2rem 0;
+  width: 100%;
 }
 
 /* 2px glowing cyan -> blue gradient connector line */
@@ -49,75 +51,84 @@
   width: 2px;
   background: linear-gradient(180deg, #38bdf8 0%, #2dd4bf 50%, rgba(56, 189, 248, 0.2) 100%);
   box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+  z-index: 1;
 }
 
 .timeline-item {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
 /* Desktop Alternating Cards (Left / Right) */
 .timeline-item-left {
   justify-content: flex-start;
-  padding-right: 50%;
 }
 
 .timeline-item-right {
   justify-content: flex-end;
-  padding-left: 50%;
 }
 
-/* Circular Glowing Date Node */
+/* Circular Glowing Date Node - Centered exactly on the line */
 .timeline-node-container {
   position: absolute;
   left: 50%;
   top: 2rem;
-  transform: translateX(-50%);
-  z-index: 5;
+  transform: translate(-50%, -50%);
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
 .timeline-node-badge {
-  padding: 0.45rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.95rem;
   border-radius: 999px;
-  background: rgba(17, 24, 39, 0.92);
-  border: 2px solid rgba(56, 189, 248, 0.6);
-  box-shadow: 0 0 24px rgba(56, 189, 248, 0.45), inset 0 0 12px rgba(56, 189, 248, 0.2);
+  background: rgba(15, 23, 42, 0.96);
+  border: 2px solid rgba(56, 189, 248, 0.75);
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.45), inset 0 0 10px rgba(56, 189, 248, 0.2);
   backdrop-filter: blur(16px);
   cursor: default;
+  pointer-events: auto;
+  white-space: nowrap;
 }
 
 .timeline-node-badge span {
-  font-size: 0.85rem;
-  font-weight: 850;
+  font-size: 0.82rem;
+  font-weight: 800;
   color: #f8fafc;
   letter-spacing: 0.03em;
   white-space: nowrap;
 }
 
-/* Premium Dark Glass Card (560px - 620px width) */
+/* Premium Dark Glass Card */
 .experience-dark-card {
-  width: 100%;
-  max-width: 560px;
-  background: rgba(17, 24, 39, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: calc(50% - 3.8rem);
+  max-width: 520px;
+  background: rgba(17, 24, 39, 0.78);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 24px;
-  padding: 2.2rem;
+  padding: 2rem;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
   transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  position: relative;
+  z-index: 2;
 }
 
 .timeline-item-left .experience-dark-card {
-  margin-right: 2.5rem;
+  margin-right: auto;
+  margin-left: 0;
 }
 
 .timeline-item-right .experience-dark-card {
-  margin-left: 2.5rem;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .experience-dark-card:hover {
@@ -138,7 +149,7 @@
 .role-company-brand {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1rem;
 }
 
 /* Circular Glowing Badge for Logo */
@@ -146,14 +157,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
   border-radius: 50%;
   background: rgba(56, 189, 248, 0.14);
   border: 1px solid rgba(56, 189, 248, 0.3);
   color: #38bdf8;
-  font-size: 1.35rem;
-  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+  font-size: 1.25rem;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
   flex-shrink: 0;
 }
 
@@ -161,23 +173,23 @@
   background: rgba(45, 212, 191, 0.14);
   border-color: rgba(45, 212, 191, 0.3);
   color: #2dd4bf;
-  box-shadow: 0 0 24px rgba(45, 212, 191, 0.35);
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.35);
 }
 
-/* Company/Degree Name: 28px Bold White */
+/* Company/Degree Name */
 .company-name-bold {
   margin: 0;
-  font-size: 28px;
-  font-weight: 850;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: #f8fafc;
-  line-height: 1.18;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
-/* Role Title: 20px Cyan Gradient */
+/* Role Title: Cyan Gradient */
 .role-title-cyan {
-  margin: 0.35rem 0 0;
-  font-size: 20px;
+  margin: 0.3rem 0 0;
+  font-size: 1.05rem;
   font-weight: 700;
   background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
   -webkit-background-clip: text;
@@ -185,17 +197,17 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Duration Pill Badge: 16px Blue/Green */
+/* Duration Pill Badge */
 .period-badge-cyan {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.95rem;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 999px;
   background: rgba(45, 212, 191, 0.12);
   border: 1px solid rgba(45, 212, 191, 0.28);
   color: #2dd4bf;
-  font-size: 16px;
+  font-size: 0.88rem;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -205,12 +217,12 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.4rem 0.85rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 999px;
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.28);
   color: #f59e0b;
-  font-size: 14px;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
@@ -224,7 +236,7 @@
 .edu-description {
   margin: 1.1rem 0 0;
   color: #cbd5e1;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.65;
 }
 
@@ -240,34 +252,34 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0.75rem;
+  padding: 0.28rem 0.7rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #94a3b8;
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* Tech Stack Icon Chips */
 .experience-tech-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin: 1.4rem 0 1.2rem;
+  gap: 0.6rem;
+  margin: 1.3rem 0 1.1rem;
 }
 
 .experience-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.42rem 0.85rem;
+  gap: 0.45rem;
+  padding: 0.38rem 0.8rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #f1f5f9;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
   transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
@@ -278,54 +290,81 @@
 }
 
 .chip-icon {
-  font-size: 1rem;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
 }
 
-/* Feature Rows with Check Icons (17px Font) */
+/* Feature Rows with Check Icons */
 .role-impact-points {
   list-style: none;
-  margin: 1.25rem 0 0;
+  margin: 1.2rem 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.8rem;
 }
 
 .role-impact-points li {
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
+  gap: 0.75rem;
   color: #e2e8f0;
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .check-bullet-icon {
   flex-shrink: 0;
   color: #38bdf8;
-  font-size: 1.3rem;
-  margin-top: 0.15rem;
+  font-size: 1.2rem;
+  margin-top: 0.18rem;
 }
 
 /* Tablet & Mobile Responsive Rules */
 @media (max-width: 1024px) {
   .premium-timeline::before {
-    left: 2rem;
-    transform: none;
+    left: 1.5rem;
+    transform: translateX(-50%);
   }
 
   .timeline-node-container {
-    left: 2rem;
-    top: 2.2rem;
+    left: 1.5rem;
+    top: 2rem;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-node-badge {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid #38bdf8;
+    background: #0f172a;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-node-badge span {
+    display: none;
+  }
+
+  .timeline-node-badge::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
   }
 
   .timeline-item,
   .timeline-item-left,
   .timeline-item-right {
     justify-content: flex-start;
-    padding-left: 5rem;
+    padding-left: 3.5rem;
     padding-right: 0;
   }
 
@@ -333,6 +372,7 @@
   .timeline-item-right .experience-dark-card {
     margin-left: 0;
     margin-right: 0;
+    width: 100%;
     max-width: 100%;
   }
 
@@ -352,26 +392,18 @@
   }
 
   .premium-timeline::before {
-    left: 0.75rem;
+    left: 1.1rem;
   }
 
   .timeline-node-container {
-    left: 0.75rem;
+    left: 1.1rem;
     top: 1.8rem;
-  }
-
-  .timeline-node-badge {
-    padding: 0.3rem 0.65rem;
-  }
-
-  .timeline-node-badge span {
-    font-size: 0.75rem;
   }
 
   .timeline-item,
   .timeline-item-left,
   .timeline-item-right {
-    padding-left: 3rem;
+    padding-left: 2.8rem;
   }
 
   .experience-dark-card {
@@ -380,19 +412,19 @@
   }
 
   .company-name-bold {
-    font-size: 22px;
+    font-size: 1.25rem;
   }
 
   .role-title-cyan {
-    font-size: 17px;
+    font-size: 0.95rem;
   }
 
   .period-badge-cyan {
-    font-size: 14px;
+    font-size: 0.8rem;
   }
 
   .role-impact-points li {
-    font-size: 15px;
+    font-size: 0.9rem;
   }
 
   .role-header-top {

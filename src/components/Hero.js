@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../assets/Hero.css';
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FaCheck, FaCopy, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiArrowRight, HiDownload, HiEye } from 'react-icons/hi';
 import ResumeModal from './ResumeModal';
 import { useTranslation } from 'react-i18next';
@@ -13,12 +13,25 @@ const socials = [
 ];
 const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
 const photoPath = `${import.meta.env.BASE_URL}Bhavik%20Patel%20Photo.jpeg`;
+const emailAddress = 'bmpatel1994@gmail.com';
 
 const Hero = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const { t } = useTranslation();
   const techChips = t('hero.tech', { returnObjects: true });
   const avatarPills = t('hero.avatarPills', { returnObjects: true });
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 3000);
+    } catch {
+      // Fallback
+      window.location.href = `mailto:${emailAddress}`;
+    }
+  };
 
   return (
     <section className="hero-section" id="home">
@@ -44,7 +57,9 @@ const Hero = () => {
             <a href="#projects" className="button button-primary">{t('hero.viewProjects')} <HiArrowRight /></a>
             <button className="button button-secondary" onClick={() => setIsResumeOpen(true)} type="button"><HiEye /> {t('hero.previewResume')}</button>
             <a href={resumePath} className="button button-secondary" download><HiDownload /> {t('hero.downloadResume')}</a>
-            <a href="#contact" className="button button-ghost">{t('hero.contactMe')}</a>
+            <button className="button button-ghost copy-email-btn" onClick={handleCopyEmail} type="button" title="Copy Email to Clipboard">
+              {isCopied ? <><FaCheck style={{ color: '#2dd4bf' }} /> Copied!</> : <><FaCopy /> Copy Email</>}
+            </button>
           </div>
           <div className="hero-socials" aria-label={t('hero.socialLinks')}>
             {socials.map((social) => (
@@ -54,6 +69,20 @@ const Hero = () => {
             ))}
           </div>
         </motion.div>
+
+        <AnimatePresence>
+          {isCopied && (
+            <motion.div
+              className="copy-toast"
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 15, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              <FaCheck /> Email copied: <strong>{emailAddress}</strong>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.div
           className="avatar-card glass-card"

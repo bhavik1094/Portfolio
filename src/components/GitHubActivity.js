@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaCodeBranch, FaExternalLinkAlt, FaFire, FaGithub, FaStar } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
-const repos = [
+const fallbackRepos = [
   {
     name: 'ai-taskflow-ui',
     description: 'Enterprise AI Task Automation SaaS Platform built with React 19, TypeScript, and .NET Core.',
@@ -24,9 +24,48 @@ const repos = [
   }
 ];
 
+const langColors = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f7df1e',
+  'C#': '#239120',
+  HTML: '#e34f26',
+  CSS: '#1572b6',
+  Python: '#3572A5',
+};
+
 const GitHubActivity = () => {
+  const [reposList, setReposList] = useState(fallbackRepos);
   const { t } = useTranslation();
   const cards = t('github.cards', { returnObjects: true });
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch('https://api.github.com/users/bhavik1094/repos?sort=pushed&per_page=6')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && Array.isArray(data) && data.length > 0 && isMounted) {
+          const formatted = data
+            .filter((r) => !r.fork)
+            .slice(0, 4)
+            .map((r) => ({
+              name: r.name,
+              description: r.description || 'Full-stack engineering and cloud-native services.',
+              language: r.language || 'TypeScript',
+              langColor: langColors[r.language] || '#38bdf8',
+              stars: r.stargazers_count || 0,
+              forks: r.forks_count || 0,
+              url: r.html_url,
+            }));
+          if (formatted.length > 0) {
+            setReposList(formatted);
+          }
+        }
+      })
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <section className="github-section" id="github-activity">
@@ -79,7 +118,7 @@ const GitHubActivity = () => {
               </div>
             </div>
             <div className="repo-showcase-grid">
-              {repos.map((repo) => (
+              {reposList.map((repo) => (
                 <a
                   href={repo.url}
                   target="_blank"

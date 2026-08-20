@@ -68,3 +68,36 @@
   background: linear-gradient(to right, #00dfd8, #007cf0);
   transform: scale(1.05);
 }
+
+.copy-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.35);
+  backdrop-filter: blur(16px);
+  color: #f8fafc;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.copy-toast svg {
+  color: #2dd4bf;
+  font-size: 1.1rem;
+}
+

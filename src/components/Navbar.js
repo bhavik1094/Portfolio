@@ -8,6 +8,7 @@ import LanguageSelector from './LanguageSelector';
 const Navbar = ({ darkMode, setDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { t } = useTranslation();
   const resumePath = `${import.meta.env.BASE_URL}Bhavik%20M%20Patel%20Resume.pdf`;
   const links = [
@@ -29,6 +30,11 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           break;
         }
       }
+
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress((window.scrollY / totalScroll) * 100);
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
@@ -45,6 +51,14 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
+      <div
+        className="nav-scroll-progress"
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      />
       <div className="navbar-container">
         <div className="navbar-brand-group">
           <a href="#home" className="logo" onClick={closeMenu}>
