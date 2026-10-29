@@ -17,7 +17,7 @@ function Experience() {
 
   return <section className="editorial-section p2-experience" id="experience" aria-labelledby="experience-title">
     <div className="portfolio-container">
-      <SectionHeading number="03" kicker={t('experience.kicker')} title={t('experience.title')} intro={t('experience.intro')} id="experience-title" />
+      <SectionHeading number="03" kicker={t('experience.kicker')} title={t('experience.title')} id="experience-title" />
       <ol className="career-list">
         {roles.map((role, index) => <Reveal as="li" className="career-entry" key={`${role.company}-${role.period}`} delay={index * 0.05}>
           <div className="career-identity">

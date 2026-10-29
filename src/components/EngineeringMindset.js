@@ -12,7 +12,7 @@ const EngineeringMindset = () => {
   const principles = t('mindset.principles', { returnObjects: true });
   return <section className="editorial-section p2-mindset" id="engineering-mindset" aria-labelledby="mindset-title">
     <div className="portfolio-container">
-      <SectionHeading number="05" kicker={t('mindset.kicker')} title={t('mindset.title')} intro={t('mindset.intro')} id="mindset-title" />
+      <SectionHeading number="05" kicker={t('mindset.kicker')} title={t('mindset.title')} id="mindset-title" />
       <ul className="principles-grid">{principles.map((principle, index) => {
         const Icon = icons[index] || HiSparkles;
         return <Reveal as="li" className="engineering-principle" key={principle} delay={(index % 2) * 0.05}>

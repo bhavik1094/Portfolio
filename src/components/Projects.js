@@ -18,7 +18,7 @@ const filterCategories = [
 const getProjectMeta = ({ title }) => {
   if (/shree krishna/i.test(title)) return {
     id: 'restaurant', tone: 'sand', category: ['fullstack', 'saas'],
-    liveUrl: 'https://shree-krishna-nasta-house-git-main-bhavu3299-2641s-projects.vercel.app/en', githubUrl: 'https://github.com/bhavik1094',
+    liveUrl: 'https://www.shreekrishnanastahouse.com/', githubUrl: 'https://github.com/bhavik1094',
   };
   if (/taskflow/i.test(title)) return {
     id: 'taskflow', tone: 'violet', category: ['fullstack', 'ai', 'saas'],
@@ -76,7 +76,7 @@ const Projects = () => {
     <section className="projects-section work-section" id="projects" aria-labelledby="work-title">
       <div className="portfolio-container">
         <motion.div className="work-heading" {...reveal()}>
-          <div><span className="work-kicker"><span aria-hidden="true">02 /</span> {t('projects.kicker')}</span><h2 id="work-title">{t('projects.title')}</h2></div><p>{t('projects.intro')}</p>
+          <div><span className="work-kicker"><span aria-hidden="true">02 /</span> {t('projects.kicker')}</span><h2 id="work-title">{t('projects.title')}</h2></div>
         </motion.div>
         <div className="work-filters" role="group" aria-label={t('projects.title')}>
           {filterCategories.map((category) => <button key={category.id} type="button" aria-pressed={activeCategory === category.id} className="work-filter" onClick={() => setActiveCategory(category.id)}>{t(category.labelKey)}</button>)}

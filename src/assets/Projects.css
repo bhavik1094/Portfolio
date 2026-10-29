@@ -1,9 +1,8 @@
 .projects-section.work-section { background: var(--bg); color: var(--text); text-align: left; }
-.work-heading { display: grid; grid-template-columns: 1fr minmax(240px, 36%); align-items: end; gap: 3rem; margin-bottom: 3rem; }
+.work-heading { margin-bottom: 3rem; }
 .work-kicker { display: inline-flex; align-items: center; gap: 1rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
 .work-kicker > span { color: var(--primary); }
 .work-heading h2 { font-family: var(--font-display); font-size: clamp(3.4rem, 7.5vw, 6.5rem); font-weight: 500; letter-spacing: -0.065em; line-height: 1.05; margin: 1rem 0 0; overflow-wrap: anywhere; }
-.work-heading > p { color: var(--muted); margin: 0 0 0.25rem; font-size: 0.95rem; line-height: 1.8; }
 .work-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; padding-block: 1.25rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .work-filter { min-height: 44px; border: 1px solid transparent; border-radius: 99px; background: transparent; color: var(--muted); padding: 0.6rem 1.15rem; font-size: 0.78rem; cursor: pointer; transition: background 200ms, color 200ms, border-color 200ms; }
 .work-filter:hover { border-color: var(--border-strong); color: var(--text); }
@@ -57,8 +56,6 @@
 .work-dialog-body .work-art-name { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-block: 1.5rem; max-width: 16ch; }
 .work-dialog-body > p { color: var(--muted); line-height: 1.85; margin-top: 1.5rem; }
 @media (max-width: 900px) {
-  .work-heading { grid-template-columns: 1fr; gap: 1.5rem; }
-  .work-heading > p { max-width: 48ch; }
   .work-featured { grid-template-columns: 1fr; gap: 2rem; }
   .work-featured-visual { min-height: 430px; }
   .work-art-featured .work-art-name { max-width: 10ch; }

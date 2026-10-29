@@ -14,10 +14,9 @@ export const Reveal = ({ as = 'div', delay = 0, children, ...props }) => {
   </Element>;
 };
 
-export const SectionHeading = ({ number, kicker, title, intro, id }) => <Reveal className="editorial-heading">
+export const SectionHeading = ({ number, kicker, title, id }) => <Reveal className="editorial-heading">
   <div className="editorial-heading-title">
     <p className="editorial-eyebrow"><span aria-hidden="true">{number} /</span>{kicker}</p>
     <h2 id={id}>{title}</h2>
   </div>
-  {intro && <p className="editorial-heading-intro">{intro}</p>}
 </Reveal>;

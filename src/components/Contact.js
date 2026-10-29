@@ -104,7 +104,7 @@ const Contact = () => {
 
   return <section className="editorial-section p2-contact" id="contact" aria-labelledby="contact-title">
     <div className="portfolio-container">
-      <SectionHeading number="09" kicker={t('contact.kicker')} title={t('contact.title')} intro={t('contact.subtitle')} id="contact-title" />
+      <SectionHeading number="09" kicker={t('contact.kicker')} title={t('contact.title')} id="contact-title" />
       <div className="p2-contact-layout">
         <Reveal className="p2-contact-direct">
           <h3>{t('contact.directLinks')}</h3>
