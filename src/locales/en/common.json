@@ -5,6 +5,9 @@
     "ariaLabel": "Select portfolio language"
   },
   "nav": {
+    "about": "About",
+    "mainLabel": "Main navigation",
+    "skipContent": "Skip to content",
     "brand": "Bhavik",
     "availability": "Remote Full-Stack",
     "projects": "Projects",
@@ -17,6 +20,12 @@
     "toggleNavigation": "Toggle navigation"
   },
   "hero": {
+    "displayFirst": "Full-stack",
+    "displaySecond": "Engineer",
+    "copied": "Copied!",
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied",
+    "scrollLabel": "Explore my work",
     "badge": "Available for Remote Full-Stack Opportunities",
     "headline": "Building scalable SaaS products with React, .NET & AI",
     "subtext": "I'm Bhavik Patel, a Full-Stack Engineer building secure APIs, modern dashboards, and AI-powered workflow automation.",
@@ -42,12 +51,17 @@
     "hireMe": "Hire Me"
   },
   "working": {
+    "pause": "Pause animation",
+    "resume": "Resume animation",
     "kicker": "Currently Working With",
     "title": "Modern product stack",
     "ariaLabel": "Currently working technologies",
     "technologies": ["React", "TypeScript", "ASP.NET Core", "C#", "SQL Server", "MongoDB", "OpenAI", "LangChain", "Tailwind CSS", "Docker", "Azure DevOps"]
   },
   "projects": {
+    "viewDetails": "View project",
+    "discussProject": "Discuss project",
+    "artworkLabel": "Project study",
     "kicker": "Featured Work",
     "title": "Projects",
     "intro": "Recruiter-friendly case studies focused on secure APIs, SaaS workflows, dashboards, and AI automation.",
@@ -203,6 +217,14 @@
     ]
   },
   "github": {
+    "loading": "Loading recent repositories…",
+    "fallback": "Live activity is unavailable. Selected repositories are shown.",
+    "latest": "Recently updated repositories",
+    "noDescription": "Explore the source code on GitHub.",
+    "taskflowDescription": "AI task automation platform built with React, TypeScript, and .NET Core.",
+    "portfolioDescription": "Developer portfolio with seven languages, themes, and a Vitest suite.",
+    "stars": "Stars",
+    "forks": "Forks",
     "kicker": "GitHub Activity",
     "title": "Proof of building",
     "cards": [
@@ -212,6 +234,9 @@
     ]
   },
   "contact": {
+    "sending": "Sending…",
+    "fallbackNotice": "Your email app has opened with your message. Please send it there.",
+    "introLink": "Book a 15-minute intro on LinkedIn",
     "kicker": "Available Remotely",
     "title": "Let's build scalable products together.",
     "subtitle": "Available for remote full-stack engineering opportunities.",

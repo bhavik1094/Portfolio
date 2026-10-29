@@ -1,10 +1,28 @@
 {
   "language": { "label": "भाषा", "placeholder": "भाषा चुनें", "ariaLabel": "पोर्टफोलियो भाषा चुनें" },
-  "nav": { "brand": "Bhavik", "availability": "रिमोट फुल-स्टैक", "projects": "प्रोजेक्ट्स", "skills": "स्किल्स", "experience": "अनुभव", "education": "शिक्षा", "contact": "संपर्क", "resume": "रिज्यूमे", "toggleTheme": "थीम बदलें", "toggleNavigation": "नेविगेशन खोलें/बंद करें" },
-  "hero": { "badge": "रिमोट फुल-स्टैक अवसरों के लिए उपलब्ध", "headline": "React, .NET और AI के साथ स्केलेबल SaaS प्रोडक्ट बनाता हूं", "subtext": "मैं Bhavik Patel हूं, एक Full-Stack Engineer जो सुरक्षित APIs, आधुनिक dashboards और AI-powered workflow automation बनाता है.", "tech": ["React", "TypeScript", ".NET Core", "SQL Server", "MongoDB", "OpenAI"], "viewProjects": "प्रोजेक्ट्स देखें", "previewResume": "रिज्यूमे प्रीव्यू", "downloadResume": "रिज्यूमे डाउनलोड", "contactMe": "संपर्क करें", "socialLinks": "सोशल लिंक", "avatarRole": "Senior Full-Stack Developer", "avatarStack": "React + .NET + AI", "avatarPills": ["API Architecture", "Dashboards", "Automation"] },
+  "nav": {
+    "about": "परिचय",
+    "mainLabel": "मुख्य नेविगेशन",
+    "skipContent": "मुख्य सामग्री पर जाएँ", "brand": "Bhavik", "availability": "रिमोट फुल-स्टैक", "projects": "प्रोजेक्ट्स", "skills": "स्किल्स", "experience": "अनुभव", "education": "शिक्षा", "contact": "संपर्क", "resume": "रिज्यूमे", "toggleTheme": "थीम बदलें", "toggleNavigation": "नेविगेशन खोलें/बंद करें" },
+  "hero": {
+    "displayFirst": "फुल-स्टैक",
+    "displaySecond": "इंजीनियर",
+    "copied": "कॉपी हो गया!",
+    "copyEmail": "ईमेल कॉपी करें",
+    "emailCopied": "ईमेल कॉपी हो गया",
+    "scrollLabel": "मेरा काम देखें", "badge": "रिमोट फुल-स्टैक अवसरों के लिए उपलब्ध", "headline": "React, .NET और AI के साथ स्केलेबल SaaS प्रोडक्ट बनाता हूं", "subtext": "मैं Bhavik Patel हूं, एक Full-Stack Engineer जो सुरक्षित APIs, आधुनिक dashboards और AI-powered workflow automation बनाता है.", "tech": ["React", "TypeScript", ".NET Core", "SQL Server", "MongoDB", "OpenAI"], "viewProjects": "प्रोजेक्ट्स देखें", "previewResume": "रिज्यूमे प्रीव्यू", "downloadResume": "रिज्यूमे डाउनलोड", "contactMe": "संपर्क करें", "socialLinks": "सोशल लिंक", "avatarRole": "Senior Full-Stack Developer", "avatarStack": "React + .NET + AI", "avatarPills": ["API Architecture", "Dashboards", "Automation"] },
   "about": { "title": "मेरे बारे में", "badge": "काम के लिए उपलब्ध", "paragraphs": ["मैं 5+ वर्षों के अनुभव वाला full-stack developer हूं, जिसने healthcare और business teams के लिए secure SaaS platforms, internal dashboards और integration-heavy products बनाए हैं.", "मेरा काम React, ASP.NET Core, SQL Server, MongoDB और modern API architecture तक फैला है, साथ ही OpenAI, LangChain और Ollama से AI automation भी शामिल है.", "मैं remote teams के लिए product-minded engineering लाता हूं: clean interfaces, traceable backend systems, practical automation और ऐसा code जो आगे बढ़ाना आसान हो."], "stats": ["5+ वर्ष अनुभव", "500+ पार्टनर सर्व्ड", "SaaS + AI अनुभव"], "hireMe": "मुझे हायर करें" },
-  "working": { "kicker": "वर्तमान में उपयोग", "title": "आधुनिक प्रोडक्ट स्टैक", "ariaLabel": "वर्तमान तकनीकें", "technologies": ["React", "TypeScript", "ASP.NET Core", "C#", "SQL Server", "MongoDB", "OpenAI", "LangChain", "Tailwind CSS", "Docker", "Azure DevOps"] },
+  "working": {
+    "pause": "एनिमेशन रोकें",
+    "resume": "एनिमेशन जारी रखें", "kicker": "वर्तमान में उपयोग", "title": "आधुनिक प्रोडक्ट स्टैक", "ariaLabel": "वर्तमान तकनीकें", "technologies": ["React", "TypeScript", "ASP.NET Core", "C#", "SQL Server", "MongoDB", "OpenAI", "LangChain", "Tailwind CSS", "Docker", "Azure DevOps"] },
   "projects": {
+    "viewDetails": "प्रोजेक्ट देखें",
+    "discussProject": "प्रोजेक्ट पर चर्चा करें",
+    "artworkLabel": "प्रोजेक्ट अध्ययन",
+    "filterAll": "सभी प्रोजेक्ट",
+    "filterFullstack": "फुल-स्टैक (.NET + React)",
+    "filterAI": "AI और ऑटोमेशन",
+    "filterSaaS": "SaaS और वेब",
     "kicker": "मुख्य कार्य", "title": "प्रोजेक्ट्स", "intro": "Secure APIs, SaaS workflows, dashboards और AI automation पर केंद्रित recruiter-friendly case studies.", "featuredKicker": "Featured Project", "github": "GitHub", "liveDemo": "Live Demo", "closeDetails": "प्रोजेक्ट विवरण बंद करें",
     "featured": { "title": "AI TaskFlow", "overview": "एक production-style full-stack SaaS task management platform, जो secure auth, role-aware workflows, analytics dashboards और maintainable React + .NET architecture दिखाता है.", "architecture": ["Controller-Service-Repository backend", "JWT + RBAC authorization", "Typed React dashboard modules", "SQL Server relational workflow data"], "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "React + TypeScript frontend", "ASP.NET Core backend", "SQL Server", "Dashboard analytics", "Projects & Tasks management"], "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"] },
     "items": [
@@ -36,12 +54,23 @@
     { "title": "Winner - LLM Bot Battle 2024", "description": "Fast और accurate workflow support के लिए LLM-powered assistant experience design और ship किया." },
     { "title": "Full Stack SaaS Portfolio Project - AI TaskFlow", "description": "Auth, roles, dashboard views और production-style architecture के साथ full-stack SaaS task platform बनाया." }
   ] },
-  "github": { "kicker": "GitHub Activity", "title": "निर्माण का प्रमाण", "cards": [
+  "github": {
+    "loading": "हाल के रिपॉज़िटरी लोड हो रहे हैं…",
+    "fallback": "लाइव गतिविधि उपलब्ध नहीं है। चुनिंदा रिपॉज़िटरी दिखाई गई हैं।",
+    "latest": "हाल में अपडेट किए गए रिपॉज़िटरी",
+    "noDescription": "GitHub पर सोर्स कोड देखें।",
+    "taskflowDescription": "React, TypeScript और .NET Core से बना AI टास्क ऑटोमेशन प्लेटफ़ॉर्म।",
+    "portfolioDescription": "सात भाषाओं, थीम और Vitest टेस्ट वाला डेवलपर पोर्टफोलियो।",
+    "stars": "स्टार",
+    "forks": "फ़ोर्क", "kicker": "GitHub Activity", "title": "निर्माण का प्रमाण", "cards": [
     { "title": "Contributions", "value": "Consistent", "detail": "Active project building, SaaS experiments और production-style portfolio work." },
     { "title": "Streak", "value": "Shipping", "detail": "React, .NET, API और AI automation work में frequent iteration पर focus." },
     { "title": "Top Languages", "value": "TS / C# / SQL", "detail": "Frontend systems, backend APIs, database workflows और automation tooling." }
   ] },
-  "contact": { "kicker": "Remote के लिए उपलब्ध", "title": "आइए scalable products साथ बनाएं.", "subtitle": "Remote full-stack engineering opportunities के लिए उपलब्ध.", "directLinks": "Direct links", "description": "Senior full-stack roles, SaaS product work, API platforms या AI workflow automation के लिए संपर्क करें.", "email": "Email", "linkedIn": "LinkedIn", "github": "GitHub", "namePlaceholder": "आपका नाम", "emailPlaceholder": "आपका ईमेल", "messagePlaceholder": "आपका संदेश", "requiredError": "कृपया सभी फ़ील्ड भरें.", "sent": "Message Sent", "send": "Send Message" },
+  "contact": {
+    "sending": "भेजा जा रहा है…",
+    "fallbackNotice": "आपका संदेश ईमेल ऐप में खुल गया है। कृपया उसे वहीं से भेजें।",
+    "introLink": "LinkedIn पर 15 मिनट की परिचय वार्ता तय करें", "kicker": "Remote के लिए उपलब्ध", "title": "आइए scalable products साथ बनाएं.", "subtitle": "Remote full-stack engineering opportunities के लिए उपलब्ध.", "directLinks": "Direct links", "description": "Senior full-stack roles, SaaS product work, API platforms या AI workflow automation के लिए संपर्क करें.", "email": "Email", "linkedIn": "LinkedIn", "github": "GitHub", "namePlaceholder": "आपका नाम", "emailPlaceholder": "आपका ईमेल", "messagePlaceholder": "आपका संदेश", "requiredError": "कृपया सभी फ़ील्ड भरें.", "sent": "Message Sent", "send": "Send Message" },
   "resume": { "kicker": "रिज्यूमे प्रीव्यू", "title": "Bhavik Patel - Full-Stack Engineer", "download": "रिज्यूमे डाउनलोड", "close": "प्रीव्यू बंद करें", "closeAria": "रिज्यूमे प्रीव्यू बंद करें", "iframeTitle": "Bhavik Patel Resume Preview" },
   "footer": { "rights": "Bhavik Patel. सर्वाधिकार सुरक्षित.", "backToTop": "ऊपर जाएं" }
 }

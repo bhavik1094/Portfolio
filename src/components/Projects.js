@@ -1,226 +1,118 @@
-import React, { useState } from 'react';
-import '../assets/Projects.css';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
-import { HiExternalLink, HiShieldCheck, HiSparkles } from 'react-icons/hi';
+import { HiArrowUpRight, HiXMark } from 'react-icons/hi2';
 import { useTranslation } from 'react-i18next';
+import AccessibleDialog from './AccessibleDialog';
+import '../assets/Projects.css';
 
-const ScreenshotMockup = ({ title, variant = 'dashboard' }) => (
-  <div className={`browser-mockup mockup-${variant}`}>
-    <div className="browser-bar">
-      <span className="dot red" />
-      <span className="dot yellow" />
-      <span className="dot green" />
-      <small className="browser-url">https://{title.toLowerCase().replace(/[^a-z0-9]/g, '-')}.vercel.app</small>
-    </div>
-    <div className="mockup-body">
-      <aside className="mockup-sidebar">
-        <div className="sidebar-brand" />
-        <div className="sidebar-nav-item active" />
-        <div className="sidebar-nav-item" />
-        <div className="sidebar-nav-item" />
-        <div className="sidebar-nav-item" />
-      </aside>
-      <main className="mockup-main">
-        <div className="mockup-header">
-          <div className="mockup-title-bar">
-            <strong>{title}</strong>
-            <span className="live-status-dot" title="Live Deployment" />
-          </div>
-        </div>
-        <div className="mockup-stats-grid">
-          <div className="stat-card">
-            <span className="stat-label">System Uptime</span>
-            <strong className="stat-value">99.99%</strong>
-            <span className="stat-trend positive">Healthy</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-label">API Latency</span>
-            <strong className="stat-value">&lt;95ms</strong>
-            <span className="stat-trend positive">Optimized</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-label">Auth &amp; RBAC</span>
-            <strong className="stat-value">JWT</strong>
-            <span className="stat-trend positive">Active</span>
-          </div>
-        </div>
-        <div className="mockup-workspace">
-          <div className="mockup-chart-area">
-            <div className="chart-bar bar-1" />
-            <div className="chart-bar bar-2" />
-            <div className="chart-bar bar-3" />
-            <div className="chart-bar bar-4" />
-            <div className="chart-bar bar-5" />
-          </div>
-          <div className="mockup-task-list">
-            <div className="task-row done">
-              <span className="task-check">✓</span>
-              <span className="task-title">ASP.NET Core &amp; React 19 Frontend</span>
-            </div>
-            <div className="task-row done">
-              <span className="task-check">✓</span>
-              <span className="task-title">JWT + RBAC Multi-tenant Auth</span>
-            </div>
-            <div className="task-row active">
-              <span className="task-check">⚡</span>
-              <span className="task-title">OpenAI &amp; LangChain Automation Pipeline</span>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
+const ease = [0.22, 1, 0.36, 1];
+const filterCategories = [
+  { id: 'all', labelKey: 'projects.filterAll' },
+  { id: 'fullstack', labelKey: 'projects.filterFullstack' },
+  { id: 'ai', labelKey: 'projects.filterAI' },
+  { id: 'saas', labelKey: 'projects.filterSaaS' },
+];
+
+// Translation arrays have different ordering. Keep destinations tied to identity.
+const getProjectMeta = ({ title }) => {
+  if (/shree krishna/i.test(title)) return {
+    id: 'restaurant', tone: 'sand', category: ['fullstack', 'saas'],
+    liveUrl: 'https://shree-krishna-nasta-house-git-main-bhavu3299-2641s-projects.vercel.app/en', githubUrl: 'https://github.com/bhavik1094',
+  };
+  if (/taskflow/i.test(title)) return {
+    id: 'taskflow', tone: 'violet', category: ['fullstack', 'ai', 'saas'],
+    liveUrl: 'https://ai-task-alpha.vercel.app/', githubUrl: 'https://github.com/bhavik1094/ai-taskflow-ui',
+  };
+  if (/employee/i.test(title)) return { id: 'employee', tone: 'sand', category: ['fullstack'], githubUrl: 'https://github.com/bhavik1094' };
+  if (/finance/i.test(title)) return { id: 'finance', tone: 'sage', category: ['fullstack', 'saas'], githubUrl: 'https://github.com/bhavik1094' };
+  return { id: 'api', tone: 'ink', category: ['fullstack'], githubUrl: 'https://github.com/bhavik1094' };
+};
+
+// Abstract editorial artwork with real names/technologies, never a simulated UI.
+const ProjectArtwork = ({ project, number, featured = false }) => (
+  <div className={`work-art work-art-${project.tone}${featured ? ' work-art-featured' : ''}`} aria-hidden="true">
+    <span className="work-art-orbit work-art-orbit-one" /><span className="work-art-orbit work-art-orbit-two" />
+    <div className="work-art-top"><span>{String(number).padStart(2, '0')}</span><HiArrowUpRight /></div>
+    <strong className="work-art-name">{project.title}</strong>
+    <div className="work-art-bottom">{project.technologies.slice(0, 3).map((tech) => <span key={tech}>{tech}</span>)}</div>
   </div>
 );
 
-const filterCategories = [
-  { id: 'all', labelKey: 'projects.filterAll', defaultLabel: 'All Projects' },
-  { id: 'fullstack', labelKey: 'projects.filterFullstack', defaultLabel: 'Full-Stack (.NET + React)' },
-  { id: 'ai', labelKey: 'projects.filterAI', defaultLabel: 'AI & Automation' },
-  { id: 'saas', labelKey: 'projects.filterSaaS', defaultLabel: 'SaaS & Web' },
-];
-
-const projectMeta = [
-  { accent: 'sky', preview: 'dashboard', category: ['fullstack', 'saas'], liveUrl: 'https://shree-krishna-nasta-house-git-main-bhavu3299-2641s-projects.vercel.app/en', githubUrl: 'https://github.com/bhavik1094' },
-  { accent: 'indigo', preview: 'login', category: ['fullstack', 'ai', 'saas'], liveUrl: 'https://ai-task-alpha.vercel.app/', githubUrl: 'https://github.com/bhavik1094/ai-taskflow-ui' },
-  { accent: 'teal', preview: 'tasks', category: ['fullstack'], githubUrl: 'https://github.com/bhavik1094' },
-  { accent: 'emerald', preview: 'analytics', category: ['fullstack', 'saas'], githubUrl: 'https://github.com/bhavik1094' },
-];
+const ProjectLinks = ({ project, t, onNavigate }) => (
+  <div className="work-links">
+    <a href={project.githubUrl} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}><FaGithub aria-hidden="true" />{t('projects.github')}<span className="sr-only"> — {project.title}</span></a>
+    <a href={project.liveUrl || '#contact'} target={project.liveUrl ? '_blank' : undefined} rel={project.liveUrl ? 'noreferrer' : undefined} onClick={(event) => { event.stopPropagation(); if (!project.liveUrl) onNavigate?.(); }}>{t(project.liveUrl ? 'projects.liveDemo' : 'projects.discussProject')}<HiArrowUpRight aria-hidden="true" /><span className="sr-only"> — {project.title}</span></a>
+  </div>
+);
 
 const Projects = () => {
-  const [selected, setSelected] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const reduceMotion = useReducedMotion();
   const featuredProject = t('projects.featured', { returnObjects: true });
-  const projects = t('projects.items', { returnObjects: true }).map((project, index) => ({
-    ...project,
-    ...projectMeta[index],
-  }));
+  const featured = { ...featuredProject, ...getProjectMeta(featuredProject) };
+  const projects = t('projects.items', { returnObjects: true }).map((project) => ({ ...project, ...getProjectMeta(project) }));
+  const featuredItem = projects.find((project) => project.id === featured.id);
+  const featuredVisible = Boolean(featuredItem) && (activeCategory === 'all' || featured.category.includes(activeCategory));
+  const orderedProjects = featuredItem ? [featuredItem, ...projects.filter((project) => project.id !== featured.id)] : projects;
+  const filteredProjects = projects.filter((project) => (activeCategory === 'all' || project.category.includes(activeCategory))
+    && (!featuredVisible || project.id !== featured.id));
+  const selected = projects.find((project) => project.id === selectedId);
 
-  const filteredProjects = projects.filter((project) => {
-    if (activeCategory === 'all') return true;
-    return project.category && project.category.includes(activeCategory);
+  useEffect(() => {
+    if (selectedId && !projects.some((project) => project.id === selectedId)) setSelectedId(null);
+    // Close only when a new locale has no corresponding project identity.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language, selectedId]);
+
+  const reveal = (delay = 0) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 }, transition: { duration: reduceMotion ? 0 : 0.75, delay: reduceMotion ? 0 : delay, ease },
   });
 
-  const openModal = (project) => setSelected(project);
-  const closeModal = () => setSelected(null);
-
   return (
-    <section className="projects-section" id="projects">
+    <section className="projects-section work-section" id="projects" aria-labelledby="work-title">
       <div className="portfolio-container">
-        <motion.div className="section-heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="section-kicker">{t('projects.kicker')}</span>
-          <h2 className="section-title text-gradient-blue">{t('projects.title')}</h2>
-          <p>{t('projects.intro')}</p>
+        <motion.div className="work-heading" {...reveal()}>
+          <div><span className="work-kicker"><span aria-hidden="true">02 /</span> {t('projects.kicker')}</span><h2 id="work-title">{t('projects.title')}</h2></div><p>{t('projects.intro')}</p>
         </motion.div>
-
-        <div className="project-filter-tabs">
-          {filterCategories.map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              className={`project-filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat.id)}
-            >
-              {t(cat.labelKey, cat.defaultLabel)}
-            </button>
-          ))}
+        <div className="work-filters" role="group" aria-label={t('projects.title')}>
+          {filterCategories.map((category) => <button key={category.id} type="button" aria-pressed={activeCategory === category.id} className="work-filter" onClick={() => setActiveCategory(category.id)}>{t(category.labelKey)}</button>)}
         </div>
-
-        {(activeCategory === 'all' || activeCategory === 'ai' || activeCategory === 'fullstack') && (
-          <motion.article
-            className="featured-project-card glass-card"
-            layout
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -6, scale: 1.01 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.25 }}
-          >
-            <div className="featured-project-preview">
-              <ScreenshotMockup title="AI TaskFlow SaaS Platform" variant="dashboard" />
-            </div>
-            <div className="featured-project-content">
-              <span className="section-kicker"><HiSparkles /> {t('projects.featuredKicker')}</span>
-              <h3>{featuredProject.title}</h3>
-              <p>{featuredProject.overview}</p>
-
-              <div className="architecture-grid">
-                {featuredProject.architecture.map((item) => (
-                  <span key={item}><HiShieldCheck /> {item}</span>
-                ))}
-              </div>
-
-              <div className="feature-list">
-                {featuredProject.features.map((feature) => <span key={feature}>{feature}</span>)}
-              </div>
-
-              <div className="tech-tags">
-                {featuredProject.technologies.map((tech) => <span key={tech} className="tag">{tech}</span>)}
-              </div>
-
-              <div className="project-actions">
-                <a href="https://github.com/bhavik1094/ai-taskflow-ui" target="_blank" rel="noreferrer"><FaGithub /> {t('projects.github')}</a>
-                <a href="https://ai-task-alpha.vercel.app/" target="_blank" rel="noreferrer"><HiExternalLink /> {t('projects.liveDemo')}</a>
-              </div>
+        {featuredVisible && (
+          <motion.article className="work-featured" {...reveal()}>
+            <motion.button type="button" className="work-featured-visual" aria-label={`${t('projects.viewDetails')}: ${featuredItem.title}`} onClick={() => setSelectedId(featuredItem.id)} initial={reduceMotion ? false : { clipPath: 'inset(8% 0 8% 0 round 18px)' }} whileInView={{ clipPath: 'inset(0% 0 0% 0 round 18px)' }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduceMotion ? 0 : 1, ease }}>
+              <ProjectArtwork project={featured} number={1} featured /><span className="work-art-caption">{t('projects.artworkLabel')}</span>
+            </motion.button>
+            <div className="work-featured-content">
+              <span className="work-kicker">{t('projects.featuredKicker')}</span><h3>{featured.title}</h3><p className="work-featured-overview">{featured.overview}</p>
+              <ul className="work-architecture">{featured.architecture.map((item) => <li key={item}>{item}</li>)}</ul>
+              <ul className="work-features">{featured.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+              <ul className="work-tech">{featured.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul><ProjectLinks project={featured} t={t} />
             </div>
           </motion.article>
         )}
-
-        <motion.div className="projects-grid" layout>
-          <AnimatePresence mode="popLayout">
+        <motion.div className="work-grid" layout={!reduceMotion}>
+          <AnimatePresence mode="popLayout" initial={false}>
             {filteredProjects.map((project, index) => (
-              <motion.article
-                className="project-card glass-card"
-                key={project.title}
-                layout
-                onClick={() => openModal(project)}
-                initial={{ opacity: 0, scale: 0.94 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.94 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={{ duration: 0.25, delay: index * 0.04 }}
-              >
-                <div className={`project-preview project-preview-${project.accent}`}>
-                  <ScreenshotMockup title={project.previewTitle} variant={project.preview} />
-                </div>
-                <div className="project-body">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="tech-tags">
-                    {project.technologies.map((tech) => <span key={tech} className="tag">{tech}</span>)}
-                  </div>
-                  <div className="project-actions">
-                    <a href={project.githubUrl || 'https://github.com/bhavik1094'} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}><FaGithub /> {t('projects.github')}</a>
-                    <a href={project.liveUrl || '#contact'} target={project.liveUrl ? '_blank' : undefined} rel={project.liveUrl ? 'noreferrer' : undefined} onClick={(e) => e.stopPropagation()}><HiExternalLink /> {t('projects.liveDemo')}</a>
-                  </div>
-                </div>
+              <motion.article className="work-card" key={project.id} layout={!reduceMotion} onClick={() => setSelectedId(project.id)} initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : index % 2 * 0.08, ease }}>
+                <button type="button" className="work-open" aria-label={`${t('projects.viewDetails')}: ${project.title}`}>
+                  <ProjectArtwork project={project} number={orderedProjects.indexOf(project) + 1} /><span className="work-open-arrow"><HiArrowUpRight aria-hidden="true" /></span>
+                </button>
+                <div className="work-card-content"><h3>{project.title}</h3><p>{project.description}</p><ul className="work-tech">{project.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul><ProjectLinks project={project} t={t} /></div>
               </motion.article>
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
-
-      <AnimatePresence>
-        {selected && (
-          <motion.div className="modal-overlay" onClick={closeModal} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <motion.div
-              className="modal-content"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, y: 24, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 24, scale: 0.96 }}
-            >
-              <button className="close-button" onClick={closeModal} type="button" aria-label={t('projects.closeDetails')}>x</button>
-              <h2 className="text-gradient-blue">{selected.title}</h2>
-              <p>{selected.description}</p>
-              <div className="tech-tags">
-                {selected.technologies.map((tech) => <span key={tech} className="tag">{tech}</span>)}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <AccessibleDialog isOpen={Boolean(selected)} onClose={() => setSelectedId(null)} titleId="work-dialog-title">
+        {selected && <>
+          <div className="portfolio-dialog-header"><div><span className="portfolio-dialog-kicker">{t('projects.kicker')}</span><h2 className="portfolio-dialog-title" id="work-dialog-title">{selected.title}</h2></div><button type="button" className="portfolio-dialog-close" data-dialog-close aria-label={t('projects.closeDetails')} onClick={() => setSelectedId(null)}><HiXMark aria-hidden="true" /></button></div>
+          <div className="work-dialog-body"><ProjectArtwork project={selected} number={orderedProjects.indexOf(selected) + 1} /><p>{selected.description}</p><ul className="work-tech">{selected.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul><ProjectLinks project={selected} t={t} onNavigate={() => setSelectedId(null)} /></div>
+        </>}
+      </AccessibleDialog>
     </section>
   );
 };

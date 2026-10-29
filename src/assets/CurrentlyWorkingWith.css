@@ -1,0 +1,12 @@
+.p2-working { border-top: 1px solid var(--border); background: var(--bg-2); }
+.p2-working .working-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2.5rem; }
+.p2-working .editorial-eyebrow { margin-bottom: 0.75rem; }
+.p2-working h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1.2; margin: 0; }
+.p2-working .working-pause { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--border-strong); border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; flex-shrink: 0; }
+.p2-working .working-pause:hover { color: var(--primary); border-color: var(--primary); }
+.p2-working .working-marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent); }
+.p2-working .working-track { display: flex; width: max-content; padding-block: 0.5rem; }
+.p2-working .working-group { display: flex; flex-shrink: 0; gap: 1.5rem; padding-right: 1.5rem; }
+.p2-working .working-group.is-static { width: 100%; padding: 0; flex-wrap: wrap; justify-content: center; }
+.p2-working .working-technology { display: inline-flex; align-items: center; gap: 1.5rem; white-space: nowrap; color: var(--muted); font-family: var(--font-display); font-weight: 400; font-size: clamp(1.25rem, 2.5vw, 2rem); letter-spacing: -0.035em; }
+.p2-working .working-technology::after { content: '·'; color: var(--primary); }

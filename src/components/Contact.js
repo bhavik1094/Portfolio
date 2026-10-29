@@ -1,48 +1,84 @@
-import React, { useState } from 'react';
-import '../assets/Contact.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaCopy, FaCheck, FaCalendarCheck } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { FaGithub, FaLinkedin, FaEnvelope, FaCopy, FaCheck } from 'react-icons/fa';
+import { HiArrowUpRight } from 'react-icons/hi2';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { Reveal, SectionHeading } from './Editorial';
+import '../assets/Contact.css';
 
 const emailAddress = 'bmpatel1994@gmail.com';
+const emptyForm = { name: '', email: '', message: '' };
+
+export const contactEmailUrl = ({ name, email, message }) => `mailto:${emailAddress}?subject=${encodeURIComponent(`Portfolio Contact from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState(emptyForm);
+  const [feedback, setFeedback] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const [error, setError] = useState('');
+  const [hasError, setHasError] = useState(false);
+  const pending = useRef(false);
+  const mounted = useRef(true);
+  const request = useRef(null);
+  const timers = useRef({ copy: null, feedback: null });
   const { t } = useTranslation();
+  const reducedMotion = useReducedMotion();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setError('');
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      request.current?.abort();
+      clearTimeout(timers.current.copy);
+      clearTimeout(timers.current.feedback);
+    };
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
+    setHasError(false);
+    setFeedback('');
   };
 
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText(emailAddress);
+      if (!mounted.current) return;
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 3000);
+      clearTimeout(timers.current.copy);
+      timers.current.copy = setTimeout(() => setIsCopied(false), 3000);
     } catch {
-      window.location.href = `mailto:${emailAddress}`;
+      if (mounted.current) window.location.href = `mailto:${emailAddress}`;
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const openEmailFallback = () => {
+    window.location.href = contactEmailUrl(form);
+    setFeedback('fallback');
+  };
 
-    if (!form.name || !form.email || !form.message) {
-      setError(t('contact.requiredError'));
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (pending.current) return;
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setHasError(true);
       return;
     }
+
+    pending.current = true;
+    setIsSubmitting(true);
+    setHasError(false);
+    setFeedback('');
+    clearTimeout(timers.current.feedback);
+    const controller = new AbortController();
+    request.current = controller;
 
     try {
       const response = await fetch('https://formsubmit.co/ajax/bmpatel1994@gmail.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -50,79 +86,80 @@ const Contact = () => {
           _subject: `Portfolio Contact from ${form.name}`,
         }),
       });
-
+      if (!mounted.current) return;
       if (response.ok) {
-        setSubmitted(true);
-        setError('');
-        setForm({ name: '', email: '', message: '' });
-      } else {
-        window.location.href = `mailto:bmpatel1994@gmail.com?subject=${encodeURIComponent(`Portfolio Contact from ${form.name}`)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
-        setSubmitted(true);
-      }
+        setFeedback('sent');
+        setForm(emptyForm);
+      } else openEmailFallback();
     } catch {
-      window.location.href = `mailto:bmpatel1994@gmail.com?subject=${encodeURIComponent(`Portfolio Contact from ${form.name}`)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
-      setSubmitted(true);
+      if (mounted.current && !controller.signal.aborted) openEmailFallback();
+    } finally {
+      pending.current = false;
+      if (mounted.current) {
+        setIsSubmitting(false);
+        timers.current.feedback = setTimeout(() => setFeedback(''), 4000);
+      }
     }
-
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 4000);
   };
 
-  return (
-    <section className="contact-section" id="contact">
-      <div className="portfolio-container">
-        <motion.div className="section-heading" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="section-kicker">{t('contact.kicker')}</span>
-          <h2 className="section-title text-gradient-blue">{t('contact.title')}</h2>
-          <p>{t('contact.subtitle')}</p>
-        </motion.div>
-
-        <motion.div className="contact-grid" initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }}>
-          <motion.div className="contact-info glass-card" whileHover={{ y: -4 }}>
-            <h3>{t('contact.directLinks')}</h3>
-            <p>{t('contact.description')}</p>
-            
-            <div className="social-icons">
-              <a href="mailto:bmpatel1994@gmail.com"><FaEnvelope /> {t('contact.email')}</a>
-              <button type="button" className="copy-contact-pill" onClick={handleCopyEmail}>
-                {isCopied ? <><FaCheck style={{ color: '#2dd4bf' }} /> Copied!</> : <><FaCopy /> Copy bmpatel1994@gmail.com</>}
-              </button>
-              <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer"><FaLinkedin /> {t('contact.linkedIn')}</a>
-              <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer"><FaGithub /> {t('contact.github')}</a>
-              <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer" className="schedule-pill">
-                <FaCalendarCheck /> Book 15-Min Intro on LinkedIn
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.form className="contact-form glass-card" onSubmit={handleSubmit} whileHover={{ y: -4 }}>
-            <input type="text" name="name" placeholder={t('contact.namePlaceholder')} value={form.name} onChange={handleChange} required />
-            <input type="email" name="email" placeholder={t('contact.emailPlaceholder')} value={form.email} onChange={handleChange} required />
-            <textarea name="message" placeholder={t('contact.messagePlaceholder')} rows="5" value={form.message} onChange={handleChange} required />
-            {error && <p className="form-error">{error}</p>}
-            <button type="submit" className="button button-primary glow-button">
-              {submitted ? t('contact.sent') : t('contact.send')}
+  return <section className="editorial-section p2-contact" id="contact" aria-labelledby="contact-title">
+    <div className="portfolio-container">
+      <SectionHeading number="09" kicker={t('contact.kicker')} title={t('contact.title')} intro={t('contact.subtitle')} id="contact-title" />
+      <div className="p2-contact-layout">
+        <Reveal className="p2-contact-direct">
+          <h3>{t('contact.directLinks')}</h3>
+          <p>{t('contact.description')}</p>
+          <div className="p2-contact-email-row">
+            <a href={`mailto:${emailAddress}`} className="p2-contact-email">{emailAddress}</a>
+            <button type="button" className="p2-contact-copy" onClick={handleCopyEmail}
+              aria-label={isCopied ? t('hero.copied') : t('hero.copyEmail')}
+              title={isCopied ? t('hero.copied') : t('hero.copyEmail')}>
+              {isCopied ? <FaCheck aria-hidden="true" /> : <FaCopy aria-hidden="true" />}
             </button>
-          </motion.form>
-        </motion.div>
-      </div>
+          </div>
+          <div className="p2-contact-socials">
+            <a href={`mailto:${emailAddress}`}><FaEnvelope aria-hidden="true" />{t('contact.email')}<HiArrowUpRight aria-hidden="true" /></a>
+            <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer"><FaLinkedin aria-hidden="true" />{t('contact.linkedIn')}<HiArrowUpRight aria-hidden="true" /></a>
+            <a href="https://github.com/bhavik1094" target="_blank" rel="noreferrer"><FaGithub aria-hidden="true" />{t('contact.github')}<HiArrowUpRight aria-hidden="true" /></a>
+          </div>
+          <a href="https://linkedin.com/in/bhavik1094" target="_blank" rel="noreferrer" className="editorial-text-link p2-contact-intro-link">
+            {t('contact.introLink', 'Book a 15-minute intro on LinkedIn')}<HiArrowUpRight aria-hidden="true" />
+          </a>
+        </Reveal>
 
-      <AnimatePresence>
-        {isCopied && (
-          <motion.div
-            className="copy-toast"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 15, scale: 0.9 }}
-            transition={{ duration: 0.2 }}
-          >
-            <FaCheck /> Email copied: <strong>{emailAddress}</strong>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
-  );
+        <Reveal delay={0.08} className="p2-contact-form-wrap">
+          <form className="p2-contact-form" onSubmit={handleSubmit} aria-busy={isSubmitting} aria-label={t('contact.send')}>
+            <div className="p2-contact-field">
+              <label htmlFor="contact-name"><span aria-hidden="true">01 /</span>{t('contact.namePlaceholder')}</label>
+              <input id="contact-name" type="text" name="name" autoComplete="name" placeholder={t('contact.namePlaceholder')} value={form.name} onChange={handleChange} required />
+            </div>
+            <div className="p2-contact-field">
+              <label htmlFor="contact-email"><span aria-hidden="true">02 /</span>{t('contact.emailPlaceholder')}</label>
+              <input id="contact-email" type="email" name="email" autoComplete="email" placeholder={t('contact.emailPlaceholder')} value={form.email} onChange={handleChange} required />
+            </div>
+            <div className="p2-contact-field">
+              <label htmlFor="contact-message"><span aria-hidden="true">03 /</span>{t('contact.messagePlaceholder')}</label>
+              <textarea id="contact-message" name="message" placeholder={t('contact.messagePlaceholder')} rows="4" value={form.message} onChange={handleChange} required />
+            </div>
+            {hasError && <p className="p2-contact-error" role="alert">{t('contact.requiredError')}</p>}
+            <div className="p2-contact-submit-row">
+              <button type="submit" className="p2-contact-submit" disabled={isSubmitting}>
+                {isSubmitting ? t('contact.sending', 'Sending…') : feedback === 'sent' ? t('contact.sent') : t('contact.send')}
+                {feedback === 'sent' ? <FaCheck aria-hidden="true" /> : <HiArrowUpRight aria-hidden="true" />}
+              </button>
+              <p className="p2-contact-feedback" role="status" aria-live="polite">
+                {feedback === 'sent' ? t('contact.sent') : feedback === 'fallback' ? t('contact.fallbackNotice', 'Your email app has opened with your message. Please send it there.') : ''}
+              </p>
+            </div>
+          </form>
+        </Reveal>
+      </div>
+    </div>
+    <p className="sr-only" role="status">{isCopied ? `${t('hero.emailCopied')}: ${emailAddress}` : ''}</p>
+    <AnimatePresence>{isCopied && <motion.div className="p2-contact-toast" aria-hidden="true"
+      initial={reducedMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+      transition={{ duration: reducedMotion ? 0 : 0.2 }}><FaCheck />{t('hero.emailCopied')}<strong>{emailAddress}</strong></motion.div>}</AnimatePresence>
+  </section>;
 };
 
 export default Contact;

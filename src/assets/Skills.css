@@ -1,58 +1,13 @@
-.skills-section {
-  padding: 4rem 2rem;
-  background-color: #ffffff;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2.5rem;
-}
-
-.text-gradient-orange {
-  background: linear-gradient(90deg, #ff7e5f, #feb47b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-}
-
-.skill-card {
-  background: #f8f9fa;
-  padding: 2rem 1rem;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 220px;
-  cursor: pointer;
-}
-
-.skill-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.skill-icon {
-  font-size: 3rem;
-  color: #007bff;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.skill-card:hover .skill-icon {
-  transform: scale(1.2) rotate(3deg);
-  color: #00c6ff;
-}
-
-.skill-card h6 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
+.p2-skills .toolkit-group { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--border); }
+.p2-skills .toolkit-group:last-child { padding-bottom: 0; }
+.p2-skills .toolkit-group-heading { display: flex; align-items: baseline; gap: 1.25rem; }
+.p2-skills .toolkit-group-heading > span { font-size: 0.7rem; color: var(--primary); font-variant-numeric: tabular-nums; }
+.p2-skills .toolkit-group-heading h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--text); line-height: 1.25; font-weight: 500; letter-spacing: -0.045em; margin: 0; }
+.p2-skills .toolkit-items { display: flex; flex-wrap: wrap; align-content: start; gap: 0.65rem; padding: 0; margin: 0; list-style: none; }
+.p2-skills .toolkit-items li { display: inline-flex; align-items: center; gap: 0.65rem; min-height: 43px; padding: 0.55rem 0.85rem; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); font-size: 0.8rem; line-height: 1.5; transition: background 220ms, color 220ms, border-color 220ms; }
+.p2-skills .toolkit-items li svg { flex-shrink: 0; color: currentColor; font-size: 1rem; opacity: 0.75; }
+.p2-skills .toolkit-items li:hover { color: var(--text); background: var(--accent-soft); border-color: var(--primary); }
+@media (max-width: 809px) {
+  .p2-skills .toolkit-group { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 1.75rem; }
+  .p2-skills .toolkit-group-heading { gap: 1rem; }
 }

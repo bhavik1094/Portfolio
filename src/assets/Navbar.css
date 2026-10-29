@@ -1,55 +1,45 @@
-/* Navbar styling handled primarily by premium design system */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-}
-
-.nav-scroll-progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #38bdf8 0%, #2dd4bf 50%, #6366f1 100%);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
-  transition: width 100ms ease-out;
-  z-index: 1001;
-}
-
-.navbar-brand-group {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-@media (max-width: 1024px) {
-  .nav-availability {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 74px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    width: 100%;
-    padding: 1.5rem;
-    background: var(--card-hover);
-    backdrop-filter: blur(24px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .hamburger {
-    display: flex !important;
-  }
-}
+.site-scroll-progress { position: fixed; inset: 0 0 auto; height: 3px; z-index: 3000; background: var(--primary); transform-origin: left; pointer-events: none; }
+.site-header { position: fixed; z-index: 2000; top: 18px; left: 0; right: 0; display: flex; justify-content: center; pointer-events: none; padding-inline: 24px; }
+.site-nav { pointer-events: auto; background: var(--header-bg); border: 1px solid var(--border); border-radius: 34px; box-shadow: 0 2px 3px #00000002; width: min(100%, 1020px); backdrop-filter: blur(18px); }
+.site-nav-top { display: flex; align-items: center; gap: 16px; padding: 7px 10px; min-height: 60px; }
+.site-brand { display: flex; align-items: center; gap: 9px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+.site-brand img { display: block; width: 36px; height: 36px; object-fit: cover; object-position: center 22%; border-radius: 50%; }
+.site-brand-dot { color: var(--primary); }
+.site-nav-links { display: flex; align-items: center; gap: clamp(2px, 0.6vw, 10px); justify-content: center; flex: 1; }
+.site-nav-top > .site-nav-links { margin-left: auto; }
+.site-header:not(.is-compact) .site-nav-top { gap: 20px; padding-inline: 12px; }
+.site-header:not(.is-compact) .site-nav-links { flex: 1 1 auto; gap: 4px; }
+.site-header:not(.is-compact) .site-nav-controls { gap: 2px; border-left: 1px solid var(--border); padding-left: 10px; }
+.site-header:not(.is-compact) .site-nav-contact { margin-left: 6px; }
+.site-nav-link { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 10px; font-size: 0.78rem; font-weight: 400; text-decoration: none; color: var(--muted); border-radius: 99px; white-space: nowrap; }
+.site-nav-link[aria-current], .site-nav-link:hover { color: var(--primary); }
+.site-nav-label { display: block; position: relative; line-height: 1.5; height: 1.5em; overflow: hidden; }
+.site-nav-label > span { display: block; transition: transform 350ms var(--ease-out); }
+.site-nav-link:hover .site-nav-label > span, .site-nav-link:focus-visible .site-nav-label > span { transform: translateY(-100%); }
+.site-nav-contact { background: var(--text); color: var(--bg); padding-inline: 20px; }
+.site-nav-contact:hover, .site-nav-contact[aria-current] { background: var(--primary); color: var(--on-accent); }
+.site-nav-controls { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.site-theme-toggle { display: grid; place-items: center; color: var(--muted); border: 0; background: transparent; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; }
+.site-theme-toggle:hover { background: var(--accent-soft); color: var(--primary); }
+.site-resume-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; min-height: 44px; text-decoration: none; font-size: 0.75rem; color: var(--muted); }
+.site-resume-link:hover { color: var(--primary); }
+.site-language-selector { font-size: 0.75rem; }
+.site-language-value { display: inline-flex; align-items: center; gap: 6px; }
+.site-language-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.site-language-option strong { font-weight: 500; }
+.site-language-option small { color: var(--muted); }
+.is-compact .site-nav { width: min(100%, 360px); }
+.is-compact .site-nav-top { gap: 12px; }
+.site-nav-availability { display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; flex: 1; color: var(--muted); font-size: 0.75rem; line-height: 1.4; }
+.site-nav-availability > span { width: 5px; height: 5px; background: #38966e; border-radius: 50%; flex-shrink: 0; }
+.site-menu-toggle { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--primary); color: var(--on-accent); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; cursor: pointer; flex-shrink: 0; }
+.site-menu-toggle span { height: 1px; width: 15px; background: currentColor; transition: transform 200ms; }
+.is-open .site-menu-toggle span:first-child { transform: translateY(3px) rotate(45deg); }
+.is-open .site-menu-toggle span:last-child { transform: translateY(-3px) rotate(-45deg); }
+.site-nav-panel-inner { padding: 5px 16px 16px; max-height: calc(100dvh - 110px); overflow-y: auto; }
+.site-nav-panel .site-nav-links { flex-direction: column; align-items: stretch; gap: 4px; padding-bottom: 15px; }
+.site-nav-panel .site-nav-link { font-size: 0.95rem; }
+.site-nav-panel .site-nav-contact { margin-top: 4px; }
+.site-nav-panel .site-nav-controls { padding-top: 10px; border-top: 1px solid var(--border); justify-content: space-between; }
+@media (max-width: 480px) { .site-header { top: 12px; padding-inline: 16px; } .site-nav { border-radius: 30px; } .site-nav-top { min-height: 56px; padding: 5px 8px; } }
+@media (prefers-reduced-motion: reduce) { .site-nav-label > span, .site-menu-toggle span { transition: none; } .site-nav-link:hover .site-nav-label > span, .site-nav-link:focus-visible .site-nav-label > span { transform: none; } }

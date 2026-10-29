@@ -31,7 +31,10 @@ const resources = {
 const supportedCodes = supportedLanguages.map((language) => language.value);
 
 const getInitialLanguage = () => {
-  const savedLanguage = localStorage.getItem('portfolioLanguage');
+  let savedLanguage;
+  try {
+    savedLanguage = localStorage.getItem('portfolioLanguage');
+  } catch { /* Browser language remains available when storage is blocked. */ }
 
   if (savedLanguage && supportedCodes.includes(savedLanguage)) {
     return savedLanguage;
@@ -65,8 +68,10 @@ i18n
 applyDocumentLanguage(i18n.language);
 
 i18n.on('languageChanged', (languageCode) => {
-  localStorage.setItem('portfolioLanguage', languageCode);
   applyDocumentLanguage(languageCode);
+  try {
+    localStorage.setItem('portfolioLanguage', languageCode);
+  } catch { /* Language switching still works without persistence. */ }
 });
 
 export default i18n;

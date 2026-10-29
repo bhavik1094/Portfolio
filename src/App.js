@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { MotionConfig, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,30 +15,39 @@ import GitHubActivity from './components/GitHubActivity';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './assets/premium.css';
+import './assets/foundation.css';
+
+const getInitialTheme = () => {
+  try {
+    return localStorage.getItem('portfolioTheme') === 'dark';
+  } catch {
+    return false;
+  }
+};
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const { i18n } = useTranslation();
+  const [darkMode, setDarkMode] = useState(getInitialTheme);
+  const { t } = useTranslation();
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
+    document.body.classList.toggle('dark', darkMode);
+    document.documentElement.style.colorScheme = darkMode ? 'dark' : 'light';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', darkMode ? '#141416' : '#f7f7f3');
+    try {
+      localStorage.setItem('portfolioTheme', darkMode ? 'dark' : 'light');
+    } catch { /* Theme switching still works when storage is unavailable. */ }
   }, [darkMode]);
 
+  useEffect(() => {
+    document.documentElement.dataset.reducedMotion = reducedMotion ? 'true' : 'false';
+  }, [reducedMotion]);
+
   return (
-    <>
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main-content">{t('nav.skipContent')}</a>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={i18n.language}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.28, ease: 'easeOut' }}
-        >
+      <main id="main-content" tabIndex={-1}>
           <Hero />
           <About />
           <CurrentlyWorkingWith />
@@ -51,9 +60,8 @@ function App() {
           <GitHubActivity />
           <Contact />
           <Footer />
-        </motion.main>
-      </AnimatePresence>
-    </>
+      </main>
+    </MotionConfig>
   );
 }
 

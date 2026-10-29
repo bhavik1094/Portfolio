@@ -1,0 +1,98 @@
+.portfolio-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  background: rgb(20 20 22 / 65%);
+  backdrop-filter: blur(8px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.portfolio-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(960px, 100%);
+  max-height: calc(100dvh - 2 * clamp(0.75rem, 3vw, 2rem));
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--bg, #f7f7f3);
+  color: var(--text, #171719);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 18%);
+  outline: none;
+}
+
+.portfolio-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 0 0 auto;
+  padding-bottom: 1rem;
+}
+
+.portfolio-dialog-kicker {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.portfolio-dialog-title {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-body, Inter, sans-serif);
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.portfolio-dialog-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.portfolio-dialog-close:hover {
+  background: var(--bg-2);
+}
+
+.portfolio-dialog-frame {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 120px;
+  width: 100%;
+  height: min(65dvh, 720px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.portfolio-dialog-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .portfolio-dialog {
+    border-radius: 18px;
+  }
+
+  .portfolio-dialog-actions > * {
+    flex: 1 1 auto;
+  }
+}

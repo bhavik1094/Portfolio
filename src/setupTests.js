@@ -2,6 +2,35 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 
+// JSDOM has no media-query or layout observers. Model a compact viewport with
+// reduced motion so interaction tests never depend on animation timers.
+Object.defineProperty(window, 'matchMedia', {
+  configurable: true,
+  writable: true,
+  value: vi.fn((query) => ({
+    matches: query.includes('prefers-reduced-motion')
+      || (query.includes('max-width') && window.innerWidth <= Number(query.match(/max-width:\s*([\d.]+)/)?.[1] || 0)),
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
+
+window.scrollTo = vi.fn();
+
+class ResizeObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+global.ResizeObserver = ResizeObserverMock;
+window.ResizeObserver = ResizeObserverMock;
+
 if (typeof HTMLCanvasElement !== 'undefined') {
   HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
     fillStyle: '',

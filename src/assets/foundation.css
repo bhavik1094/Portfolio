@@ -1,0 +1,91 @@
+/* Shared foundations. Section-specific compositions remain in their own stylesheets. */
+:root {
+  --bg: #f7f7f3;
+  --bg-2: #f0f0ec;
+  --bg-3: #e8e8e3;
+  --card: #ffffff;
+  --card-hover: #ffffff;
+  --header-bg: rgba(255, 255, 252, 0.94);
+  --text: #171719;
+  --muted: #66666e;
+  --primary: #6f55c9;
+  --accent: #6f55c9;
+  --on-accent: #ffffff;
+  --accent-soft: #ece8fa;
+  --border: #deded9;
+  --border-strong: #bcbcb6;
+  --shadow: 0 20px 60px -24px #17171920;
+  --font-body: 'Inter', 'Nirmala UI', 'Yu Gothic', system-ui, sans-serif;
+  --font-display: 'Manrope', 'Nirmala UI', 'Yu Gothic', system-ui, sans-serif;
+  --font-hero: 'Antonio', Impact, 'Arial Narrow', sans-serif;
+  --content-width: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section-space: clamp(5rem, 9vw, 9rem);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+body.dark {
+  --bg: #141416;
+  --bg-2: #1c1c20;
+  --bg-3: #242429;
+  --card: #1c1c20;
+  --card-hover: #25252b;
+  --header-bg: rgba(28, 28, 32, 0.95);
+  --text: #f4f3ed;
+  --muted: #b0afb8;
+  --primary: #a894f4;
+  --accent: #a894f4;
+  --on-accent: #171719;
+  --accent-soft: #302842;
+  --border: #35353c;
+  --border-strong: #5e5e68;
+  --shadow: 0 24px 70px -24px #00000070;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { position: relative; scroll-behavior: smooth; scroll-padding-top: 110px; }
+body, body.dark { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.65; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body::before { content: none; }
+a { color: inherit; }
+button, input, textarea, select { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+img { max-width: 100%; }
+button, a, input, textarea, select { touch-action: manipulation; }
+::selection { color: var(--text); background: var(--accent-soft); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+#main-content:focus { outline: none; }
+[data-navigation-focus]:focus { outline: none; }
+.portfolio-container { width: 100%; max-width: var(--content-width); margin-inline: auto; padding-inline: var(--gutter); }
+.portfolio-container :where(div, article, figure, header, form) { min-width: 0; }
+main > section:not(.editorial-hero) { padding-block: var(--section-space); }
+main > .p2-working { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.section-heading { max-width: 780px; margin: 0 auto 3rem; text-align: center; }
+.section-heading p { margin: 1rem auto 0; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+.section-title, .about-heading { font-family: var(--font-display); color: var(--text); font-size: clamp(2.4rem, 4.6vw, 4.25rem); font-weight: 600; line-height: 1.12; letter-spacing: -0.055em; margin: 0.75rem 0 0; }
+.section-kicker, .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+.text-gradient-blue, .text-gradient-orange, .text-gradient-green, .text-gradient-purple { background: none; -webkit-text-fill-color: currentColor; color: var(--text); }
+.glass-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; box-shadow: none; }
+.glass-card:hover { border-color: var(--border-strong); box-shadow: none; }
+.availability-badge { animation: none; }
+.button, .hire-button, .project-actions a { font-weight: 500; box-shadow: none; }
+.button:hover, .hire-button:hover, .project-actions a:hover { box-shadow: none; }
+.button-primary, .glow-button { background: var(--text); color: var(--bg); }
+.button-secondary, .button-ghost, .project-actions a, body.dark .button-secondary, body.dark .button-ghost, body.dark .project-actions a { background: var(--card); color: var(--text); }
+.button-primary:hover, .glow-button:hover { background: var(--primary); color: var(--on-accent); }
+.skill-card { max-width: none; }
+.about-content { min-width: 0; }
+.about-container > * { min-width: 0; }
+.modal-overlay { z-index: 4000; }
+.copy-toast { position: fixed; z-index: 5000; right: 24px; bottom: 24px; max-width: calc(100vw - 48px); display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 1rem 1.25rem; border-radius: 12px; background: var(--text); color: var(--bg); border: 1px solid var(--border); box-shadow: var(--shadow); font-size: 0.8rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; z-index: 6000; top: 8px; left: 12px; background: var(--text); color: var(--bg); padding: 12px 20px; border-radius: 8px; transform: translateY(-180%); text-decoration: none; }
+.skip-link:focus { transform: translateY(0); }
+@media (max-width: 809px) {
+  .github-stats-row { grid-template-columns: 1fr; }
+  .github-stat-pills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* CSS and MotionConfig cover both animation systems; Lottie is paused in About. */
+@media (prefers-reduced-motion: reduce) {
+  html, html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
