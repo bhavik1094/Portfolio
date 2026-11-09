@@ -64,48 +64,95 @@
     "artworkLabel": "Project study",
     "kicker": "Featured Work",
     "title": "Projects",
-    "intro": "Recruiter-friendly case studies focused on secure APIs, SaaS workflows, dashboards, and AI automation.",
+    "intro": "Selected React dashboards and responsive business websites.",
     "featuredKicker": "Featured Project",
     "filterAll": "All Projects",
-    "filterFullstack": "Full-Stack (.NET + React)",
-    "filterAI": "AI & Automation",
-    "filterSaaS": "SaaS & Web",
     "github": "GitHub",
     "liveDemo": "Live Demo",
     "closeDetails": "Close project details",
     "featured": {
-      "title": "AI TaskFlow",
-      "overview": "A production-style full-stack SaaS task management platform built to demonstrate secure auth, role-aware workflows, analytics dashboards, and maintainable React + .NET architecture.",
-      "architecture": ["Controller-Service-Repository backend", "JWT + RBAC authorization", "Typed React dashboard modules", "SQL Server relational workflow data"],
-      "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "React + TypeScript frontend", "ASP.NET Core backend", "SQL Server", "Dashboard analytics", "Projects & Tasks management"],
-      "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"]
+      "id": "aurelia-admin",
+      "title": "Aurelia Admin",
+      "overview": "A premium React admin dashboard template featuring interactive analytics, reusable UI components, advanced data tables, customizable themes, and responsive layouts.",
+      "architecture": [
+        "React + Vite dashboard",
+        "Reusable UI components",
+        "Interactive analytics",
+        "Responsive layouts"
+      ],
+      "features": [
+        "Advanced data tables",
+        "Customizable themes"
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "Zustand",
+        "Recharts",
+        "AG Grid"
+      ]
     },
     "items": [
       {
+        "id": "aurelia-admin",
+        "title": "Aurelia Admin",
+        "description": "A premium React admin dashboard template featuring interactive analytics, reusable UI components, advanced data tables, customizable themes, and responsive layouts.",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "AG Grid"
+        ],
+        "screenshotAlt": "Aurelia Admin dashboard homepage"
+      },
+      {
+        "id": "invoxa",
+        "title": "Invoxa",
+        "description": "A premium invoice and billing dashboard built with React, featuring invoice management, financial analytics, PDF generation, client management, and customizable business settings.",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "pdf-lib"
+        ],
+        "screenshotAlt": "Invoxa dashboard homepage"
+      },
+      {
+        "id": "adhyashakti-solar",
+        "title": "Adhyashakti Solar",
+        "description": "A modern, responsive solar energy business website featuring solar service information, lead enquiry forms, intuitive navigation, and SEO-focused implementation.",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "screenshotAlt": "Adhyashakti Solar homepage"
+      },
+      {
+        "id": "shree-krishna-nasta-house",
         "title": "Shree Krishna Nasta House",
-        "description": "Multi-language online food ordering & menu platform with interactive food categories, cart management, and responsive Vercel deployment.",
-        "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
-        "previewTitle": "Shree Krishna Nasta House"
-      },
-      {
-        "title": "AI TaskFlow SaaS Platform",
-        "description": "Full-stack SaaS task management platform featuring secure JWT authentication, role-based access, interactive task workflows, and live Vercel deployment.",
-        "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "Vercel"],
-        "previewTitle": "AI TaskFlow Dashboard"
-      },
-      {
-        "title": "API Portal",
-        "description": "Developer portal for API key management, analytics, and secure integrations.",
-        "technologies": ["React", ".NET Core", "REST APIs", "Swagger"],
-        "previewTitle": "Task Management"
-      },
-      {
-        "title": "Finance Portal",
-        "description": "Finance dashboard for invoice generation, payment tracking, reconciliation, and reports.",
-        "technologies": ["React", ".NET Core", "SQL Server", "Reporting"],
-        "previewTitle": "Analytics"
+        "description": "A responsive Gujarati food-ordering website for a Paris-based business, featuring categorized menus, cart management, party orders, and WhatsApp-based ordering.",
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
+        ],
+        "screenshotAlt": "Shree Krishna Nasta House homepage"
       }
-    ]
+    ],
+    "filterDashboards": "Dashboards",
+    "filterWebsites": "Websites"
   },
   "experience": {
     "kicker": "Career Timeline",

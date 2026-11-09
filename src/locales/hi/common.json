@@ -20,17 +20,96 @@
     "discussProject": "प्रोजेक्ट पर चर्चा करें",
     "artworkLabel": "प्रोजेक्ट अध्ययन",
     "filterAll": "सभी प्रोजेक्ट",
-    "filterFullstack": "फुल-स्टैक (.NET + React)",
-    "filterAI": "AI और ऑटोमेशन",
-    "filterSaaS": "SaaS और वेब",
-    "kicker": "मुख्य कार्य", "title": "प्रोजेक्ट्स", "intro": "Secure APIs, SaaS workflows, dashboards और AI automation पर केंद्रित recruiter-friendly case studies.", "featuredKicker": "Featured Project", "github": "GitHub", "liveDemo": "Live Demo", "closeDetails": "प्रोजेक्ट विवरण बंद करें",
-    "featured": { "title": "AI TaskFlow", "overview": "एक production-style full-stack SaaS task management platform, जो secure auth, role-aware workflows, analytics dashboards और maintainable React + .NET architecture दिखाता है.", "architecture": ["Controller-Service-Repository backend", "JWT + RBAC authorization", "Typed React dashboard modules", "SQL Server relational workflow data"], "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "React + TypeScript frontend", "ASP.NET Core backend", "SQL Server", "Dashboard analytics", "Projects & Tasks management"], "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"] },
+    "kicker": "मुख्य कार्य",
+    "title": "प्रोजेक्ट्स",
+    "intro": "चुनिंदा React डैशबोर्ड और रिस्पॉन्सिव व्यावसायिक वेबसाइटें।",
+    "featuredKicker": "Featured Project",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "closeDetails": "प्रोजेक्ट विवरण बंद करें",
+    "featured": {
+      "id": "aurelia-admin",
+      "title": "Aurelia Admin",
+      "overview": "React पर बना एक प्रीमियम एडमिन डैशबोर्ड टेम्पलेट, जिसमें इंटरैक्टिव एनालिटिक्स, पुनः उपयोग योग्य UI कॉम्पोनेंट, उन्नत डेटा टेबल, अनुकूलन योग्य थीम और रिस्पॉन्सिव लेआउट हैं।",
+      "architecture": [
+        "React + Vite डैशबोर्ड",
+        "पुनः उपयोग योग्य UI कॉम्पोनेंट",
+        "इंटरैक्टिव एनालिटिक्स",
+        "रिस्पॉन्सिव लेआउट"
+      ],
+      "features": [
+        "उन्नत डेटा टेबल",
+        "अनुकूलन योग्य थीम"
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "Zustand",
+        "Recharts",
+        "AG Grid"
+      ]
+    },
     "items": [
-      { "title": "AI TaskFlow", "description": "React, .NET Core, JWT auth, role-based access, SQL Server, dashboard, projects और tasks वाला full-stack SaaS task management platform.", "technologies": ["React", "TypeScript", ".NET Core", "SQL Server", "JWT", "Tailwind"], "previewTitle": "AI TaskFlow Dashboard" },
-      { "title": "Employee Management Portal", "description": "Admin और employee dashboards वाला role-based full-stack portal, secure access और साफ operational workflows के साथ.", "technologies": ["React", "ASP.NET Core", "SQL Server", "JWT"], "previewTitle": "Login Page" },
-      { "title": "API Portal", "description": "API key management, analytics और secure integrations के लिए developer portal.", "technologies": ["React", ".NET Core", "REST APIs", "Swagger"], "previewTitle": "Task Management" },
-      { "title": "Finance Portal", "description": "Invoice generation, payment tracking, reconciliation और reports के लिए finance dashboard.", "technologies": ["React", ".NET Core", "SQL Server", "Reporting"], "previewTitle": "Analytics" }
-    ]
+      {
+        "id": "aurelia-admin",
+        "title": "Aurelia Admin",
+        "description": "React पर बना एक प्रीमियम एडमिन डैशबोर्ड टेम्पलेट, जिसमें इंटरैक्टिव एनालिटिक्स, पुनः उपयोग योग्य UI कॉम्पोनेंट, उन्नत डेटा टेबल, अनुकूलन योग्य थीम और रिस्पॉन्सिव लेआउट हैं।",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "AG Grid"
+        ],
+        "screenshotAlt": "Aurelia Admin डैशबोर्ड का होमपेज"
+      },
+      {
+        "id": "invoxa",
+        "title": "Invoxa",
+        "description": "React पर बना एक प्रीमियम इनवॉइस और बिलिंग डैशबोर्ड, जिसमें इनवॉइस प्रबंधन, वित्तीय एनालिटिक्स, PDF निर्माण, ग्राहक प्रबंधन और अनुकूलन योग्य व्यावसायिक सेटिंग हैं।",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "pdf-lib"
+        ],
+        "screenshotAlt": "Invoxa डैशबोर्ड का होमपेज"
+      },
+      {
+        "id": "adhyashakti-solar",
+        "title": "Adhyashakti Solar",
+        "description": "सौर ऊर्जा व्यवसाय के लिए एक आधुनिक, रिस्पॉन्सिव वेबसाइट, जिसमें सौर सेवाओं की जानकारी, पूछताछ फ़ॉर्म, सहज नेविगेशन और SEO पर केंद्रित कार्यान्वयन है।",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "screenshotAlt": "Adhyashakti Solar का होमपेज"
+      },
+      {
+        "id": "shree-krishna-nasta-house",
+        "title": "Shree Krishna Nasta House",
+        "description": "पेरिस स्थित व्यवसाय के लिए एक रिस्पॉन्सिव गुजराती भोजन ऑर्डरिंग वेबसाइट, जिसमें श्रेणीबद्ध मेनू, कार्ट प्रबंधन, पार्टी ऑर्डर और WhatsApp के माध्यम से ऑर्डर देने की सुविधा है।",
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
+        ],
+        "screenshotAlt": "Shree Krishna Nasta House का होमपेज"
+      }
+    ],
+    "filterDashboards": "डैशबोर्ड",
+    "filterWebsites": "वेबसाइटें"
   },
   "experience": { "kicker": "करियर टाइमलाइन", "title": "अनुभव", "intro": "SaaS portals, secure APIs, dashboards और AI automation में impact-focused engineering.", "roles": [
     { "company": "Valcz India Pvt Ltd", "role": "Software Engineer", "period": "July 2025-Present", "tech": ["ASP.NET Core", "React", "MongoDB", "Docker", "Azure DevOps"], "points": ["Controller-Service-Repository architecture से scalable backend APIs बनाए.", "Reusable component systems के साथ React + TypeScript dashboards विकसित किए.", "JWT authentication, MongoDB persistence और API tracking systems लागू किए."] },

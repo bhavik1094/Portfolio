@@ -20,14 +20,97 @@
     "discussProject": "પ્રોજેક્ટ વિશે ચર્ચા કરો",
     "artworkLabel": "પ્રોજેક્ટ અભ્યાસ",
     "filterAll": "બધા પ્રોજેક્ટ",
-    "filterFullstack": "ફુલ-સ્ટેક (.NET + React)",
-    "filterAI": "AI અને ઓટોમેશન",
-    "filterSaaS": "SaaS અને વેબ", "kicker": "Featured Work", "title": "પ્રોજેક્ટ્સ", "intro": "Secure APIs, SaaS workflows, dashboards અને AI automation પર કેન્દ્રિત recruiter-friendly case studies.", "featuredKicker": "Featured Project", "github": "GitHub", "liveDemo": "Live Demo", "closeDetails": "પ્રોજેક્ટ વિગતો બંધ કરો", "featured": { "title": "AI TaskFlow", "overview": "Secure auth, role-aware workflows, analytics dashboards અને maintainable React + .NET architecture દર્શાવતું production-style full-stack SaaS task management platform.", "architecture": ["Controller-Service-Repository backend", "JWT + RBAC authorization", "Typed React dashboard modules", "SQL Server relational workflow data"], "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "React + TypeScript frontend", "ASP.NET Core backend", "SQL Server", "Dashboard analytics", "Projects & Tasks management"], "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"] }, "items": [
-    { "title": "AI TaskFlow", "description": "React, .NET Core, JWT auth, role-based access, SQL Server, dashboard, projects અને tasks સાથે full-stack SaaS task management platform.", "technologies": ["React", "TypeScript", ".NET Core", "SQL Server", "JWT", "Tailwind"], "previewTitle": "AI TaskFlow Dashboard" },
-    { "title": "Employee Management Portal", "description": "Admin/employee dashboards, secure access અને clean operational workflows સાથે role-based full-stack portal.", "technologies": ["React", "ASP.NET Core", "SQL Server", "JWT"], "previewTitle": "Login Page" },
-    { "title": "API Portal", "description": "API key management, analytics અને secure integrations માટે developer portal.", "technologies": ["React", ".NET Core", "REST APIs", "Swagger"], "previewTitle": "Task Management" },
-    { "title": "Finance Portal", "description": "Invoice generation, payment tracking, reconciliation અને reports માટે finance dashboard.", "technologies": ["React", ".NET Core", "SQL Server", "Reporting"], "previewTitle": "Analytics" }
-  ] },
+    "kicker": "Featured Work",
+    "title": "પ્રોજેક્ટ્સ",
+    "intro": "પસંદ કરેલા React ડેશબોર્ડ અને રિસ્પોન્સિવ વ્યવસાયિક વેબસાઇટ્સ.",
+    "featuredKicker": "Featured Project",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "closeDetails": "પ્રોજેક્ટ વિગતો બંધ કરો",
+    "featured": {
+      "id": "aurelia-admin",
+      "title": "Aurelia Admin",
+      "overview": "React પર બનેલું પ્રીમિયમ એડમિન ડેશબોર્ડ ટેમ્પલેટ, જેમાં ઇન્ટરેક્ટિવ એનાલિટિક્સ, ફરી ઉપયોગ કરી શકાય તેવા UI કોમ્પોનન્ટ્સ, અદ્યતન ડેટા ટેબલ્સ, કસ્ટમાઇઝ કરી શકાય તેવી થીમ્સ અને રિસ્પોન્સિવ લેઆઉટ્સ છે.",
+      "architecture": [
+        "React + Vite ડેશબોર્ડ",
+        "ફરી ઉપયોગ કરી શકાય તેવા UI કોમ્પોનન્ટ્સ",
+        "ઇન્ટરેક્ટિવ એનાલિટિક્સ",
+        "રિસ્પોન્સિવ લેઆઉટ્સ"
+      ],
+      "features": [
+        "અદ્યતન ડેટા ટેબલ્સ",
+        "કસ્ટમાઇઝ કરી શકાય તેવી થીમ્સ"
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "Zustand",
+        "Recharts",
+        "AG Grid"
+      ]
+    },
+    "items": [
+      {
+        "id": "aurelia-admin",
+        "title": "Aurelia Admin",
+        "description": "React પર બનેલું પ્રીમિયમ એડમિન ડેશબોર્ડ ટેમ્પલેટ, જેમાં ઇન્ટરેક્ટિવ એનાલિટિક્સ, ફરી ઉપયોગ કરી શકાય તેવા UI કોમ્પોનન્ટ્સ, અદ્યતન ડેટા ટેબલ્સ, કસ્ટમાઇઝ કરી શકાય તેવી થીમ્સ અને રિસ્પોન્સિવ લેઆઉટ્સ છે.",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "AG Grid"
+        ],
+        "screenshotAlt": "Aurelia Admin ડેશબોર્ડનું હોમપેજ"
+      },
+      {
+        "id": "invoxa",
+        "title": "Invoxa",
+        "description": "React પર બનેલું પ્રીમિયમ ઇન્વૉઇસ અને બિલિંગ ડેશબોર્ડ, જેમાં ઇન્વૉઇસ વ્યવસ્થાપન, નાણાકીય એનાલિટિક્સ, PDF જનરેશન, ગ્રાહક વ્યવસ્થાપન અને કસ્ટમાઇઝ કરી શકાય તેવી વ્યવસાયિક સેટિંગ્સ છે.",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "pdf-lib"
+        ],
+        "screenshotAlt": "Invoxa ડેશબોર્ડનું હોમપેજ"
+      },
+      {
+        "id": "adhyashakti-solar",
+        "title": "Adhyashakti Solar",
+        "description": "સૌર ઊર્જા વ્યવસાય માટેની આધુનિક, રિસ્પોન્સિવ વેબસાઇટ, જેમાં સૌર સેવાઓની માહિતી, પૂછપરછ ફોર્મ્સ, સરળ નેવિગેશન અને SEO પર કેન્દ્રિત અમલીકરણ છે.",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "screenshotAlt": "Adhyashakti Solarનું હોમપેજ"
+      },
+      {
+        "id": "shree-krishna-nasta-house",
+        "title": "Shree Krishna Nasta House",
+        "description": "પેરિસ સ્થિત વ્યવસાય માટેની રિસ્પોન્સિવ ગુજરાતી ભોજન ઓર્ડરિંગ વેબસાઇટ, જેમાં શ્રેણી મુજબના મેનૂ, કાર્ટ વ્યવસ્થાપન, પાર્ટી ઓર્ડર્સ અને WhatsApp દ્વારા ઓર્ડર કરવાની સુવિધા છે.",
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
+        ],
+        "screenshotAlt": "Shree Krishna Nasta Houseનું હોમપેજ"
+      }
+    ],
+    "filterDashboards": "ડેશબોર્ડ",
+    "filterWebsites": "વેબસાઇટ્સ"
+  },
   "experience": { "kicker": "Career Timeline", "title": "અનુભવ", "intro": "SaaS portals, secure APIs, dashboards અને AI automationમાં impact-focused engineering.", "roles": [
     { "company": "Valcz India Pvt Ltd", "role": "Software Engineer", "period": "July 2025-Present", "tech": ["ASP.NET Core", "React", "MongoDB", "Docker", "Azure DevOps"], "points": ["Controller-Service-Repository architectureથી scalable backend APIs બનાવ્યાં.", "Reusable component systems સાથે React + TypeScript dashboards વિકસાવ્યાં.", "JWT authentication, MongoDB persistence અને API tracking systems અમલમાં મૂક્યાં."] },
     { "company": "Sikka.ai", "role": "Software Engineer", "period": "Apr 2021-Jun 2025", "tech": ["React", "ASP.NET Core", "SQL Server", "OpenAI", "LangChain"], "points": ["500+ healthcare partners દ્વારા ઉપયોગમાં લેવાતા API અને Finance portals બનાવ્યાં.", "Secure REST APIs, dashboards, analytics અને financial workflows વિકસાવ્યાં.", "OpenAI, LangChain અને Ollama વડે AI automation agents બનાવ્યાં."] },

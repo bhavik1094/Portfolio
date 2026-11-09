@@ -69,11 +69,11 @@ test.each(variants)('%s in %s mode preserves navigation, dialogs, filters and fo
   await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
   expect(projectTrigger).toHaveFocus();
 
-  const aiFilter = screen.getByRole('button', { name: i18n.t('projects.filterAI') });
-  await userEvent.click(aiFilter);
-  expect(aiFilter).toHaveAttribute('aria-pressed', 'true');
+  const websitesFilter = screen.getByRole('button', { name: i18n.t('projects.filterWebsites') });
+  await userEvent.click(websitesFilter);
+  expect(websitesFilter).toHaveAttribute('aria-pressed', 'true');
   const projects = document.getElementById('projects');
-  await waitFor(() => expect(within(projects).getAllByRole('heading', { level: 3 })).toHaveLength(1));
+  await waitFor(() => expect(within(projects).getAllByRole('heading', { level: 3 })).toHaveLength(2));
 
   for (const key of ['namePlaceholder', 'emailPlaceholder', 'messagePlaceholder']) {
     expect(screen.getByRole('textbox', { name: i18n.t(`contact.${key}`) })).toBeRequired();

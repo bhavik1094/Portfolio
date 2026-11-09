@@ -20,9 +20,97 @@
     "discussProject": "Hablar del proyecto",
     "artworkLabel": "Estudio de proyecto",
     "filterAll": "Todos los proyectos",
-    "filterFullstack": "Full-stack (.NET + React)",
-    "filterAI": "IA y automatización",
-    "filterSaaS": "SaaS y Web", "kicker": "Trabajo destacado", "title": "Proyectos", "intro": "Casos de estudio para recruiters enfocados en APIs seguras, workflows SaaS, dashboards y automatización IA.", "featuredKicker": "Proyecto destacado", "github": "GitHub", "liveDemo": "Live Demo", "closeDetails": "Cerrar detalles del proyecto", "featured": { "title": "AI TaskFlow", "overview": "Plataforma SaaS full-stack de gestión de tareas estilo producción para mostrar auth segura, workflows por rol, dashboards analytics y arquitectura React + .NET mantenible.", "architecture": ["Backend Controller-Service-Repository", "Autorización JWT + RBAC", "Módulos React tipados", "Datos relacionales SQL Server"], "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "Frontend React + TypeScript", "Backend ASP.NET Core", "SQL Server", "Dashboard analytics", "Gestión de Projects & Tasks"], "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"] }, "items": [{ "title": "AI TaskFlow", "description": "Plataforma SaaS full-stack de tareas con React, .NET Core, JWT auth, roles, SQL Server, dashboard, proyectos y tareas.", "technologies": ["React", "TypeScript", ".NET Core", "SQL Server", "JWT", "Tailwind"], "previewTitle": "AI TaskFlow Dashboard" }, { "title": "Employee Management Portal", "description": "Portal full-stack por roles con dashboards admin/empleado, acceso seguro y workflows operativos.", "technologies": ["React", "ASP.NET Core", "SQL Server", "JWT"], "previewTitle": "Login Page" }, { "title": "API Portal", "description": "Portal de desarrolladores para API keys, analytics e integraciones seguras.", "technologies": ["React", ".NET Core", "REST APIs", "Swagger"], "previewTitle": "Task Management" }, { "title": "Finance Portal", "description": "Dashboard financiero para facturación, pagos, reconciliación y reportes.", "technologies": ["React", ".NET Core", "SQL Server", "Reporting"], "previewTitle": "Analytics" }] },
+    "kicker": "Trabajo destacado",
+    "title": "Proyectos",
+    "intro": "Una selección de paneles React y sitios web empresariales adaptables.",
+    "featuredKicker": "Proyecto destacado",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "closeDetails": "Cerrar detalles del proyecto",
+    "featured": {
+      "id": "aurelia-admin",
+      "title": "Aurelia Admin",
+      "overview": "Una plantilla premium de panel de administración React con análisis interactivos, componentes de interfaz reutilizables, tablas de datos avanzadas, temas personalizables y diseños adaptables.",
+      "architecture": [
+        "Panel React + Vite",
+        "Componentes de interfaz reutilizables",
+        "Análisis interactivos",
+        "Diseños adaptables"
+      ],
+      "features": [
+        "Tablas de datos avanzadas",
+        "Temas personalizables"
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "Zustand",
+        "Recharts",
+        "AG Grid"
+      ]
+    },
+    "items": [
+      {
+        "id": "aurelia-admin",
+        "title": "Aurelia Admin",
+        "description": "Una plantilla premium de panel de administración React con análisis interactivos, componentes de interfaz reutilizables, tablas de datos avanzadas, temas personalizables y diseños adaptables.",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "AG Grid"
+        ],
+        "screenshotAlt": "Página de inicio del panel Aurelia Admin"
+      },
+      {
+        "id": "invoxa",
+        "title": "Invoxa",
+        "description": "Un panel premium de facturación desarrollado con React que incluye gestión de facturas, análisis financieros, generación de PDF, gestión de clientes y ajustes empresariales personalizables.",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "pdf-lib"
+        ],
+        "screenshotAlt": "Página de inicio del panel Invoxa"
+      },
+      {
+        "id": "adhyashakti-solar",
+        "title": "Adhyashakti Solar",
+        "description": "Un sitio web moderno y adaptable para una empresa de energía solar, con información sobre servicios solares, formularios de consulta, navegación intuitiva e implementación orientada al SEO.",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "screenshotAlt": "Página de inicio de Adhyashakti Solar"
+      },
+      {
+        "id": "shree-krishna-nasta-house",
+        "title": "Shree Krishna Nasta House",
+        "description": "Un sitio web adaptable de pedidos de comida gujarati para una empresa con sede en París, con menús por categorías, gestión del carrito, pedidos para fiestas y pedidos a través de WhatsApp.",
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
+        ],
+        "screenshotAlt": "Página de inicio de Shree Krishna Nasta House"
+      }
+    ],
+    "filterDashboards": "Paneles",
+    "filterWebsites": "Sitios web"
+  },
   "experience": { "kicker": "Trayectoria", "title": "Experiencia", "intro": "Engineering orientado a impacto en portales SaaS, APIs seguras, dashboards y automatización IA.", "roles": [{ "company": "Valcz India Pvt Ltd", "role": "Software Engineer", "period": "July 2025-Present", "tech": ["ASP.NET Core", "React", "MongoDB", "Docker", "Azure DevOps"], "points": ["Construí APIs backend escalables con arquitectura Controller-Service-Repository.", "Desarrollé dashboards React + TypeScript con sistemas de componentes reutilizables.", "Implementé JWT authentication, persistencia MongoDB y tracking de APIs."] }, { "company": "Sikka.ai", "role": "Software Engineer", "period": "Apr 2021-Jun 2025", "tech": ["React", "ASP.NET Core", "SQL Server", "OpenAI", "LangChain"], "points": ["Construí portales API y Finance usados por 500+ partners healthcare.", "Desarrollé REST APIs seguras, dashboards, analytics y workflows financieros.", "Creé agentes de automatización IA con OpenAI, LangChain y Ollama."] }, { "company": "Knovos", "role": "Software Engineering Intern", "period": "Dec 2018-May 2019", "tech": ["ASP.NET", "C#", "SQL", "Web Forms"], "points": ["Mantuve y mejoré proyectos ASP.NET existentes.", "Colaboré con seniors para entregar features estables."] }] },
   "skills": { "kicker": "Kit técnico", "title": "Habilidades", "groups": [{ "title": "Frontend", "items": ["React", "TypeScript", "JavaScript", "Tailwind", "HTML", "CSS"] }, { "title": "Backend", "items": ["ASP.NET Core", "C#", "REST APIs", "Entity Framework", "JWT"] }, { "title": "Base de datos", "items": ["SQL Server", "MongoDB", "MySQL"] }, { "title": "DevOps & Tools", "items": ["Git", "Docker", "Azure DevOps", "Postman", "Swagger"] }, { "title": "AI & Automatización", "items": ["OpenAI", "LangChain", "Ollama", "Prompt Engineering"] }] },
   "mindset": { "kicker": "Mentalidad Engineering", "title": "Construido para equipos de producto", "intro": "Me enfoco en sistemas mantenibles, workflows seguros e interfaces que los equipos pueden extender después del lanzamiento.", "principles": ["APIs escalables", "Clean Architecture", "JWT Security", "RBAC", "Performance Optimization", "AI Integrations", "Reusable Components", "Full-Stack SaaS Development"] },

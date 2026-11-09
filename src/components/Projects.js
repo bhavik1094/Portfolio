@@ -9,40 +9,49 @@ import '../assets/Projects.css';
 const ease = [0.22, 1, 0.36, 1];
 const filterCategories = [
   { id: 'all', labelKey: 'projects.filterAll' },
-  { id: 'fullstack', labelKey: 'projects.filterFullstack' },
-  { id: 'ai', labelKey: 'projects.filterAI' },
-  { id: 'saas', labelKey: 'projects.filterSaaS' },
+  { id: 'dashboard', labelKey: 'projects.filterDashboards' },
+  { id: 'website', labelKey: 'projects.filterWebsites' },
 ];
 
-// Translation arrays have different ordering. Keep destinations tied to identity.
-const getProjectMeta = ({ title }) => {
-  if (/shree krishna/i.test(title)) return {
-    id: 'restaurant', tone: 'sand', category: ['fullstack', 'saas'],
+// Stable identities keep links and filters independent of translated copy.
+const projectMetadata = {
+  'aurelia-admin': {
+    tone: 'violet', category: ['dashboard'], liveUrl: 'https://aurelia-admin-five.vercel.app/',
+  },
+  invoxa: {
+    tone: 'sage', category: ['dashboard'], liveUrl: 'https://invoxa-beige.vercel.app/',
+  },
+  'adhyashakti-solar': {
+    tone: 'sand', category: ['website'], liveUrl: 'https://adhyashakti-solar.vercel.app/',
+  },
+  'shree-krishna-nasta-house': {
+    tone: 'sand', category: ['website'],
     liveUrl: 'https://www.shreekrishnanastahouse.com/', githubUrl: 'https://github.com/bhavik1094',
-  };
-  if (/taskflow/i.test(title)) return {
-    id: 'taskflow', tone: 'violet', category: ['fullstack', 'ai', 'saas'],
-    liveUrl: 'https://ai-task-alpha.vercel.app/', githubUrl: 'https://github.com/bhavik1094/ai-taskflow-ui',
-  };
-  if (/employee/i.test(title)) return { id: 'employee', tone: 'sand', category: ['fullstack'], githubUrl: 'https://github.com/bhavik1094' };
-  if (/finance/i.test(title)) return { id: 'finance', tone: 'sage', category: ['fullstack', 'saas'], githubUrl: 'https://github.com/bhavik1094' };
-  return { id: 'api', tone: 'ink', category: ['fullstack'], githubUrl: 'https://github.com/bhavik1094' };
+  },
 };
 
-// Abstract editorial artwork with real names/technologies, never a simulated UI.
-const ProjectArtwork = ({ project, number, featured = false }) => (
-  <div className={`work-art work-art-${project.tone}${featured ? ' work-art-featured' : ''}`} aria-hidden="true">
-    <span className="work-art-orbit work-art-orbit-one" /><span className="work-art-orbit work-art-orbit-two" />
-    <div className="work-art-top"><span>{String(number).padStart(2, '0')}</span><HiArrowUpRight /></div>
-    <strong className="work-art-name">{project.title}</strong>
-    <div className="work-art-bottom">{project.technologies.slice(0, 3).map((tech) => <span key={tech}>{tech}</span>)}</div>
-  </div>
-);
+// Discover existing public assets without importing or duplicating the images.
+const screenshots = new Set(Object.keys(import.meta.glob('/public/images/projects/*.webp', { eager: true })));
 
-const ProjectLinks = ({ project, t, onNavigate }) => (
+// Keep the original artwork until a real screenshot is supplied, or if it fails.
+export const ProjectArtwork = ({ project, number, featured = false }) => {
+  const [failedSource, setFailedSource] = useState(null);
+  const showScreenshot = Boolean(project.imageUrl && project.imageUrl !== failedSource);
+
+  return <div className={`work-art work-art-${project.tone}${featured ? ' work-art-featured' : ''}`} aria-hidden={showScreenshot ? undefined : true}>
+    <span className="work-art-orbit work-art-orbit-one" aria-hidden="true" /><span className="work-art-orbit work-art-orbit-two" aria-hidden="true" />
+    <div className="work-art-top" aria-hidden="true"><span>{String(number).padStart(2, '0')}</span><HiArrowUpRight /></div>
+    {showScreenshot ? <div className="work-art-image-frame"><img className="work-art-image" src={project.imageUrl} alt={project.screenshotAlt}
+      loading={featured ? 'eager' : 'lazy'} decoding="async" onError={() => setFailedSource(project.imageUrl)} /></div>
+      : <strong className="work-art-name">{project.title}</strong>}
+    <div className="work-art-bottom" aria-hidden="true">{project.technologies.slice(0, 3).map((tech) => <span key={tech}>{tech}</span>)}</div>
+  </div>;
+};
+
+const ProjectLinks = ({ project, t }) => (
   <div className="work-links">
-    <a href={project.githubUrl} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}><FaGithub aria-hidden="true" />{t('projects.github')}<span className="sr-only"> — {project.title}</span></a>
-    <a href={project.liveUrl || '#contact'} target={project.liveUrl ? '_blank' : undefined} rel={project.liveUrl ? 'noreferrer' : undefined} onClick={(event) => { event.stopPropagation(); if (!project.liveUrl) onNavigate?.(); }}>{t(project.liveUrl ? 'projects.liveDemo' : 'projects.discussProject')}<HiArrowUpRight aria-hidden="true" /><span className="sr-only"> — {project.title}</span></a>
+    {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()}><FaGithub aria-hidden="true" />{t('projects.github')}<span className="sr-only"> — {project.title}</span></a>}
+    {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()}>{t('projects.liveDemo')}<HiArrowUpRight aria-hidden="true" /><span className="sr-only"> — {project.title}</span></a>}
   </div>
 );
 
@@ -52,9 +61,15 @@ const Projects = () => {
   const { t, i18n } = useTranslation();
   const reduceMotion = useReducedMotion();
   const featuredProject = t('projects.featured', { returnObjects: true });
-  const featured = { ...featuredProject, ...getProjectMeta(featuredProject) };
-  const projects = t('projects.items', { returnObjects: true }).map((project) => ({ ...project, ...getProjectMeta(project) }));
-  const featuredItem = projects.find((project) => project.id === featured.id);
+  const projects = t('projects.items', { returnObjects: true }).map((project) => ({
+    ...project, ...projectMetadata[project.id],
+    imageUrl: screenshots.has(`/public/images/projects/${project.id}.webp`)
+      ? `${import.meta.env.BASE_URL}images/projects/${project.id}.webp` : undefined,
+  }));
+  const featuredItem = projects.find((project) => project.id === featuredProject.id);
+  const featured = { ...featuredItem, ...featuredProject };
+  const visibleCategories = filterCategories.filter((category) => category.id === 'all'
+    || projects.some((project) => project.category.includes(category.id)));
   const featuredVisible = Boolean(featuredItem) && (activeCategory === 'all' || featured.category.includes(activeCategory));
   const orderedProjects = featuredItem ? [featuredItem, ...projects.filter((project) => project.id !== featured.id)] : projects;
   const filteredProjects = projects.filter((project) => (activeCategory === 'all' || project.category.includes(activeCategory))
@@ -79,7 +94,7 @@ const Projects = () => {
           <div><span className="work-kicker"><span aria-hidden="true">02 /</span> {t('projects.kicker')}</span><h2 id="work-title">{t('projects.title')}</h2></div>
         </motion.div>
         <div className="work-filters" role="group" aria-label={t('projects.title')}>
-          {filterCategories.map((category) => <button key={category.id} type="button" aria-pressed={activeCategory === category.id} className="work-filter" onClick={() => setActiveCategory(category.id)}>{t(category.labelKey)}</button>)}
+          {visibleCategories.map((category) => <button key={category.id} type="button" aria-pressed={activeCategory === category.id} className="work-filter" onClick={() => setActiveCategory(category.id)}>{t(category.labelKey)}</button>)}
         </div>
         {featuredVisible && (
           <motion.article className="work-featured" {...reveal()}>
@@ -110,7 +125,7 @@ const Projects = () => {
       <AccessibleDialog isOpen={Boolean(selected)} onClose={() => setSelectedId(null)} titleId="work-dialog-title">
         {selected && <>
           <div className="portfolio-dialog-header"><div><span className="portfolio-dialog-kicker">{t('projects.kicker')}</span><h2 className="portfolio-dialog-title" id="work-dialog-title">{selected.title}</h2></div><button type="button" className="portfolio-dialog-close" data-dialog-close aria-label={t('projects.closeDetails')} onClick={() => setSelectedId(null)}><HiXMark aria-hidden="true" /></button></div>
-          <div className="work-dialog-body"><ProjectArtwork project={selected} number={orderedProjects.indexOf(selected) + 1} /><p>{selected.description}</p><ul className="work-tech">{selected.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul><ProjectLinks project={selected} t={t} onNavigate={() => setSelectedId(null)} /></div>
+          <div className="work-dialog-body"><ProjectArtwork project={selected} number={orderedProjects.indexOf(selected) + 1} /><p>{selected.description}</p><ul className="work-tech">{selected.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul><ProjectLinks project={selected} t={t} /></div>
         </>}
       </AccessibleDialog>
     </section>

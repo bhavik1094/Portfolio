@@ -20,9 +20,97 @@
     "discussProject": "プロジェクトについて相談",
     "artworkLabel": "プロジェクト紹介",
     "filterAll": "すべてのプロジェクト",
-    "filterFullstack": "フルスタック (.NET + React)",
-    "filterAI": "AI と自動化",
-    "filterSaaS": "SaaS とウェブ", "kicker": "注目の実績", "title": "プロジェクト", "intro": "安全なAPI、SaaSワークフロー、ダッシュボード、AI自動化に焦点を当てた採用担当者向けのケーススタディです。", "featuredKicker": "注目プロジェクト", "github": "GitHub", "liveDemo": "Live Demo", "closeDetails": "プロジェクト詳細を閉じる", "featured": { "title": "AI TaskFlow", "overview": "安全な認証、ロール対応ワークフロー、分析ダッシュボード、保守しやすいReact + .NET構成を示す、本番想定のFull-Stack SaaSタスク管理プラットフォームです。", "architecture": ["Controller-Service-Repository backend", "JWT + RBAC authorization", "Typed React dashboard modules", "SQL Server relational workflow data"], "features": ["JWT Authentication", "Role-Based Access Control (RBAC)", "React + TypeScript frontend", "ASP.NET Core backend", "SQL Server", "Dashboard analytics", "Projects & Tasks management"], "technologies": ["React", "TypeScript", "ASP.NET Core", "SQL Server", "JWT", "RBAC", "Tailwind"] }, "items": [{ "title": "AI TaskFlow", "description": "React、.NET Core、JWT認証、ロールベースアクセス、SQL Server、ダッシュボード、プロジェクト・タスク管理を備えたFull-Stack SaaSです。", "technologies": ["React", "TypeScript", ".NET Core", "SQL Server", "JWT", "Tailwind"], "previewTitle": "AI TaskFlow Dashboard" }, { "title": "Employee Management Portal", "description": "管理者・従業員ダッシュボード、安全なアクセス、整理された業務フローを備えたロールベースポータルです。", "technologies": ["React", "ASP.NET Core", "SQL Server", "JWT"], "previewTitle": "Login Page" }, { "title": "API Portal", "description": "APIキー管理、分析、安全な統合のための開発者ポータルです。", "technologies": ["React", ".NET Core", "REST APIs", "Swagger"], "previewTitle": "Task Management" }, { "title": "Finance Portal", "description": "請求書作成、支払い追跡、照合、レポート用のFinance Dashboardです。", "technologies": ["React", ".NET Core", "SQL Server", "Reporting"], "previewTitle": "Analytics" }] },
+    "kicker": "注目の実績",
+    "title": "プロジェクト",
+    "intro": "React ダッシュボードとレスポンシブなビジネスサイトの制作事例。",
+    "featuredKicker": "注目プロジェクト",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "closeDetails": "プロジェクト詳細を閉じる",
+    "featured": {
+      "id": "aurelia-admin",
+      "title": "Aurelia Admin",
+      "overview": "インタラクティブな分析、再利用可能な UI コンポーネント、高機能なデータテーブル、カスタマイズ可能なテーマ、レスポンシブなレイアウトを備えたプレミアム React 管理ダッシュボードテンプレート。",
+      "architecture": [
+        "React + Vite ダッシュボード",
+        "再利用可能な UI コンポーネント",
+        "インタラクティブな分析",
+        "レスポンシブなレイアウト"
+      ],
+      "features": [
+        "高機能なデータテーブル",
+        "カスタマイズ可能なテーマ"
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "Tailwind CSS",
+        "Zustand",
+        "Recharts",
+        "AG Grid"
+      ]
+    },
+    "items": [
+      {
+        "id": "aurelia-admin",
+        "title": "Aurelia Admin",
+        "description": "インタラクティブな分析、再利用可能な UI コンポーネント、高機能なデータテーブル、カスタマイズ可能なテーマ、レスポンシブなレイアウトを備えたプレミアム React 管理ダッシュボードテンプレート。",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "AG Grid"
+        ],
+        "screenshotAlt": "Aurelia Admin ダッシュボードのホームページ"
+      },
+      {
+        "id": "invoxa",
+        "title": "Invoxa",
+        "description": "請求書管理、財務分析、PDF 生成、顧客管理、カスタマイズ可能なビジネス設定を備えた、React 製のプレミアム請求・課金ダッシュボード。",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Zustand",
+          "Recharts",
+          "pdf-lib"
+        ],
+        "screenshotAlt": "Invoxa ダッシュボードのホームページ"
+      },
+      {
+        "id": "adhyashakti-solar",
+        "title": "Adhyashakti Solar",
+        "description": "太陽光発電サービスの情報、問い合わせフォーム、直感的なナビゲーション、SEO を重視した実装を備えた、太陽光エネルギー企業向けのモダンなレスポンシブウェブサイト。",
+        "technologies": [
+          "React",
+          "Vite",
+          "JavaScript",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "screenshotAlt": "Adhyashakti Solar のホームページ"
+      },
+      {
+        "id": "shree-krishna-nasta-house",
+        "title": "Shree Krishna Nasta House",
+        "description": "カテゴリー別メニュー、カート管理、パーティー向け注文、WhatsApp 経由の注文に対応した、パリの事業者向けのレスポンシブなグジャラート料理注文サイト。",
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
+        ],
+        "screenshotAlt": "Shree Krishna Nasta House のホームページ"
+      }
+    ],
+    "filterDashboards": "ダッシュボード",
+    "filterWebsites": "ウェブサイト"
+  },
   "experience": { "kicker": "キャリアタイムライン", "title": "経験", "intro": "SaaSポータル、安全なAPI、ダッシュボード、AI自動化におけるインパクト重視のエンジニアリング。", "roles": [{ "company": "Valcz India Pvt Ltd", "role": "Software Engineer", "period": "July 2025-Present", "tech": ["ASP.NET Core", "React", "MongoDB", "Docker", "Azure DevOps"], "points": ["Controller-Service-Repository architectureでスケーラブルなbackend APIsを構築。", "再利用可能なcomponent systemsでReact + TypeScript dashboardsを開発。", "JWT authentication、MongoDB persistence、API tracking systemsを実装。"] }, { "company": "Sikka.ai", "role": "Software Engineer", "period": "Apr 2021-Jun 2025", "tech": ["React", "ASP.NET Core", "SQL Server", "OpenAI", "LangChain"], "points": ["500+ healthcare partnersが利用するAPIおよびFinance portalsを構築。", "安全なREST APIs、dashboards、analytics、financial workflowsを開発。", "OpenAI、LangChain、OllamaでAI automation agentsを構築。"] }, { "company": "Knovos", "role": "Software Engineering Intern", "period": "Dec 2018-May 2019", "tech": ["ASP.NET", "C#", "SQL", "Web Forms"], "points": ["既存ASP.NET projectsの保守と改善。", "Senior developersと協力して安定したfeaturesを提供。"] }] },
   "skills": { "kicker": "技術ツールキット", "title": "スキル", "groups": [{ "title": "Frontend", "items": ["React", "TypeScript", "JavaScript", "Tailwind", "HTML", "CSS"] }, { "title": "Backend", "items": ["ASP.NET Core", "C#", "REST APIs", "Entity Framework", "JWT"] }, { "title": "Database", "items": ["SQL Server", "MongoDB", "MySQL"] }, { "title": "DevOps & Tools", "items": ["Git", "Docker", "Azure DevOps", "Postman", "Swagger"] }, { "title": "AI & Automation", "items": ["OpenAI", "LangChain", "Ollama", "Prompt Engineering"] }] },
   "mindset": { "kicker": "エンジニアリング姿勢", "title": "プロダクトチームのために構築", "intro": "保守しやすいシステム、安全なワークフロー、ローンチ後も拡張できるインターフェースを重視します。", "principles": ["Scalable APIs", "Clean Architecture", "JWT Security", "RBAC", "Performance Optimization", "AI Integrations", "Reusable Components", "Full-Stack SaaS Development"] },

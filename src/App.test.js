@@ -59,14 +59,14 @@ test('language switching preserves the contact draft and selected project filter
   render(<App />);
   const nameField = screen.getByPlaceholderText(i18n.t('contact.namePlaceholder'));
   await userEvent.type(nameField, 'A portfolio visitor');
-  await userEvent.click(screen.getByRole('button', { name: i18n.t('projects.filterAI') }));
+  await userEvent.click(screen.getByRole('button', { name: i18n.t('projects.filterWebsites') }));
   const projectSection = document.getElementById('projects');
-  await waitFor(() => expect(within(projectSection).getAllByRole('heading', { level: 3 })).toHaveLength(1));
+  await waitFor(() => expect(within(projectSection).getAllByRole('heading', { level: 3 })).toHaveLength(2));
 
   await act(async () => { await i18n.changeLanguage('fr'); });
 
   expect(screen.getByPlaceholderText(i18n.t('contact.namePlaceholder'))).toHaveValue('A portfolio visitor');
-  await waitFor(() => expect(within(projectSection).getAllByRole('heading', { level: 3 })).toHaveLength(1));
+  await waitFor(() => expect(within(projectSection).getAllByRole('heading', { level: 3 })).toHaveLength(2));
   expect(document.documentElement).toHaveAttribute('lang', 'fr');
   expect(localStorage.getItem('portfolioLanguage')).toBe('fr');
   expect(fetch).not.toHaveBeenCalledWith(expect.stringContaining('formsubmit'), expect.anything());

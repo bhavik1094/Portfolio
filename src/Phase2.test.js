@@ -46,11 +46,11 @@ test.each(supportedLanguages.map(({ value }) => value))('preserves section conte
 
 test('project filters expose selection and keep only matching projects', async () => {
   render(<Projects />);
-  const filter = screen.getByRole('button', { name: i18n.t('projects.filterAI') });
+  const filter = screen.getByRole('button', { name: i18n.t('projects.filterDashboards') });
   await userEvent.click(filter);
   expect(filter).toHaveAttribute('aria-pressed', 'true');
   expect(screen.getByRole('button', { name: i18n.t('projects.filterAll') })).toHaveAttribute('aria-pressed', 'false');
-  await waitFor(() => expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(1));
+  await waitFor(() => expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(2));
   expect(screen.queryByRole('heading', { name: 'Shree Krishna Nasta House' })).not.toBeInTheDocument();
 });
 
@@ -63,6 +63,8 @@ test('project details open from the keyboard and restore focus on Escape', async
   const dialog = await screen.findByRole('dialog', { name: project.title });
   expect(dialog).toHaveAttribute('aria-modal', 'true');
   expect(within(dialog).getByText(project.description)).toBeVisible();
+  expect(within(dialog).getAllByRole('link')).toHaveLength(1);
+  expect(within(dialog).getByRole('link')).toHaveAttribute('href', 'https://aurelia-admin-five.vercel.app/');
   expect(screen.getByRole('button', { name: i18n.t('projects.closeDetails') })).toHaveFocus();
   expect(document.body.style.overflow).toBe('hidden');
   await userEvent.keyboard('{Shift>}{Tab}{/Shift}');
@@ -75,10 +77,10 @@ test('project details open from the keyboard and restore focus on Escape', async
 test('shows the featured project once in every matching filter and retains its item details', async () => {
   render(<Projects />);
   const featured = i18n.t('projects.featured', { returnObjects: true });
-  const item = i18n.t('projects.items', { returnObjects: true }).find((project) => /taskflow/i.test(project.title));
-  for (const filter of ['filterAll', 'filterFullstack', 'filterAI', 'filterSaaS']) {
+  const item = i18n.t('projects.items', { returnObjects: true }).find((project) => project.id === 'aurelia-admin');
+  for (const filter of ['filterAll', 'filterDashboards']) {
     await userEvent.click(screen.getByRole('button', { name: i18n.t(`projects.${filter}`) }));
-    await waitFor(() => expect(screen.getAllByRole('heading', { level: 3 }).filter((heading) => /taskflow/i.test(heading.textContent))).toHaveLength(1));
+    await waitFor(() => expect(screen.getAllByRole('heading', { level: 3 }).filter((heading) => heading.textContent === item.title)).toHaveLength(1));
     expect(screen.getByRole('heading', { level: 3, name: featured.title })).toBeVisible();
     expect(screen.getByText(featured.overview)).toBeVisible();
   }
@@ -93,22 +95,13 @@ test('shows the featured project once in every matching filter and retains its i
   expect(trigger).toHaveFocus();
 });
 
-test.each(['fr', 'de', 'es', 'hi', 'gu', 'ja'])('links the translated TaskFlow project to its own destination in %s', async (language) => {
-  await i18n.changeLanguage(language);
+test('opening a live project link does not open its details dialog', async () => {
   render(<Projects />);
-  const title = i18n.t('projects.items', { returnObjects: true })[0].title;
-  const article = screen.getByRole('button', { name: `${i18n.t('projects.viewDetails')}: ${title}` }).closest('article');
-  expect(within(article).getByRole('link', { name: new RegExp(i18n.t('projects.liveDemo')) })).toHaveAttribute('href', 'https://ai-task-alpha.vercel.app/');
-});
-
-test('discussing a project closes its dialog and retains the contact anchor', async () => {
-  render(<Projects />);
-  await userEvent.click(screen.getByRole('button', { name: `${i18n.t('projects.viewDetails')}: API Portal` }));
-  const dialog = screen.getByRole('dialog', { name: 'API Portal' });
-  const discuss = within(dialog).getByRole('link', { name: `${i18n.t('projects.discussProject')} — API Portal` });
-  expect(discuss).toHaveAttribute('href', '#contact');
-  await userEvent.click(discuss);
-  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  const article = screen.getByRole('heading', { level: 3, name: 'Invoxa' }).closest('article');
+  const liveDemo = within(article).getByRole('link', { name: `${i18n.t('projects.liveDemo')} — Invoxa` });
+  expect(liveDemo).toHaveAttribute('href', 'https://invoxa-beige.vercel.app/');
+  await userEvent.click(liveDemo);
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 });
 
 test('GitHub loading resolves to current non-fork repository data', async () => {
